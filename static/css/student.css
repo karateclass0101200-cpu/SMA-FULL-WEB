@@ -1,0 +1,1393 @@
+.student-page {
+    background: #080808;
+    min-height: 100vh;
+}
+
+
+/* SIDEBAR */
+
+.student-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #0d0d0d;
+
+    border-right: 1px solid #222;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 100;
+}
+
+
+.student-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 25px 20px;
+
+    border-bottom: 1px solid #222;
+}
+
+
+.student-brand > div {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d71920;
+
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+}
+
+
+.student-brand section {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.student-brand strong {
+    font-family: "Oswald", sans-serif;
+}
+
+
+.student-brand span {
+    color: #666;
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+
+/* PROFILE */
+
+.student-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 22px 20px;
+
+    border-bottom: 1px solid #222;
+}
+
+
+.student-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #222;
+
+    color: #d71920;
+
+    font-family: "Oswald", sans-serif;
+}
+
+
+.student-profile div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.student-profile strong {
+    font-size: 11px;
+}
+
+
+.student-profile span {
+    color: #d71920;
+
+    font-size: 8px;
+
+    margin-top: 3px;
+}
+
+
+/* NAV */
+
+.student-nav {
+    padding: 18px 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.student-nav button,
+.student-sidebar-bottom button {
+    width: 100%;
+
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #777;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    text-align: left;
+}
+
+
+.student-nav button:hover,
+.student-nav button.active,
+.student-sidebar-bottom button:hover {
+    background: #171717;
+    color: white;
+}
+
+
+.student-nav button.active {
+    border-left: 2px solid #d71920;
+}
+
+
+.student-sidebar-bottom {
+    margin-top: auto;
+
+    padding: 15px 12px;
+
+    border-top: 1px solid #222;
+}
+
+
+/* MAIN */
+
+.student-main {
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 45px;
+}
+
+
+.student-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+
+.student-header > div:first-child span {
+    color: #d71920;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+
+.student-header h1 {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 35px;
+
+    margin-top: 5px;
+}
+
+
+.student-status {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #35c759;
+
+    font-size: 9px;
+}
+
+
+.student-status i {
+    width: 7px;
+    height: 7px;
+
+    background: #35c759;
+
+    border-radius: 50%;
+}
+
+
+/* SECTIONS */
+
+.student-section {
+    display: none;
+}
+
+
+.active-student-section {
+    display: block;
+}
+
+
+/* WELCOME */
+
+.student-welcome {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 35px;
+
+    background: #111;
+
+    border: 1px solid #222;
+
+    margin-bottom: 20px;
+}
+
+
+.student-welcome > div:first-child > span {
+    color: #d71920;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+
+.student-welcome h2 {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 32px;
+
+    margin: 7px 0;
+}
+
+
+.student-welcome p {
+    color: #666;
+
+    font-size: 11px;
+}
+
+
+.student-badge {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #d71920;
+
+    color: #d71920;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 22px;
+}
+
+
+/* INFO */
+
+.student-info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.student-info-card {
+    padding: 22px;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.student-info-card span {
+    display: block;
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+
+.student-info-card strong {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 20px;
+}
+
+
+/* CONTENT */
+
+.student-content-grid {
+    display: grid;
+
+    grid-template-columns: 1.3fr 1fr;
+
+    gap: 20px;
+}
+
+
+.student-panel {
+    padding: 25px;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.panel-title span {
+    color: #d71920;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.panel-title h3 {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 22px;
+
+    margin-top: 4px;
+}
+
+
+.class-details {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    margin-top: 25px;
+}
+
+
+.class-details div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.class-details label {
+    color: #555;
+
+    font-size: 8px;
+}
+
+
+.class-details strong {
+    color: #ccc;
+
+    font-size: 10px;
+}
+
+
+/* ANNOUNCEMENT */
+
+.announcement-item {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+    padding: 15px;
+
+    background: #171717;
+}
+
+
+.announcement-icon {
+    font-size: 20px;
+}
+
+
+.announcement-item strong {
+    font-size: 11px;
+}
+
+
+.announcement-item p {
+    color: #666;
+
+    font-size: 9px;
+
+    margin-top: 5px;
+}
+
+
+.announcement-item small {
+    color: #444;
+
+    font-size: 8px;
+
+    display: block;
+
+    margin-top: 7px;
+}
+
+
+/* HEADINGS */
+
+.student-section-heading {
+    margin-bottom: 25px;
+}
+
+
+.student-section-heading span {
+    color: #d71920;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.student-section-heading h2 {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 35px;
+
+    margin-top: 5px;
+}
+
+
+/* PROFILE */
+
+.profile-panel {
+    display: flex;
+
+    gap: 35px;
+
+    padding: 30px;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.profile-photo {
+    width: 130px;
+    height: 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: #191919;
+
+    border: 1px solid #333;
+
+    color: #555;
+
+    font-size: 9px;
+}
+
+
+.profile-details {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+.profile-details div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.profile-details label {
+    color: #555;
+
+    font-size: 8px;
+}
+
+
+.profile-details strong {
+    color: #ccc;
+
+    font-size: 10px;
+}
+
+
+/* TIMING */
+
+.timing-card {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.timing-card div {
+    padding: 30px 20px;
+
+    border-right: 1px solid #222;
+}
+
+
+.timing-card div:last-child {
+    border-right: none;
+}
+
+
+.timing-card span {
+    display: block;
+
+    color: #555;
+
+    font-size: 8px;
+
+    margin-bottom: 8px;
+}
+
+
+.timing-card strong {
+    color: #ccc;
+
+    font-size: 10px;
+}
+
+
+/* ATTENDANCE */
+
+.attendance-summary {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.attendance-summary div {
+    padding: 25px;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.attendance-summary span {
+    display: block;
+
+    color: #666;
+
+    font-size: 8px;
+
+    margin-bottom: 8px;
+}
+
+
+.attendance-summary strong {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 28px;
+}
+
+
+.empty-student-panel {
+    padding: 60px;
+
+    background: #111;
+
+    border: 1px solid #222;
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 11px;
+}
+
+
+/* ANNOUNCEMENTS */
+
+.student-announcement {
+    display: flex;
+
+    gap: 15px;
+
+    padding: 25px;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.student-announcement > span {
+    font-size: 25px;
+}
+
+
+.student-announcement strong {
+    font-size: 12px;
+}
+
+
+.student-announcement p {
+    color: #777;
+
+    font-size: 10px;
+
+    margin-top: 6px;
+}
+
+
+.student-announcement small {
+    display: block;
+
+    color: #555;
+
+    font-size: 8px;
+
+    margin-top: 8px;
+}
+
+
+/* MESSAGE */
+
+.message-panel,
+.password-panel {
+    max-width: 650px;
+
+    padding: 30px;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.message-panel label,
+.password-panel label {
+    display: block;
+
+    color: #777;
+
+    font-size: 9px;
+
+    margin-bottom: 8px;
+
+    margin-top: 18px;
+}
+
+
+.message-panel textarea {
+    width: 100%;
+
+    height: 180px;
+
+    resize: vertical;
+
+    padding: 15px;
+
+    background: #171717;
+
+    border: 1px solid #292929;
+
+    color: white;
+
+    outline: none;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+}
+
+
+.message-panel button,
+.password-panel button {
+    margin-top: 15px;
+
+    padding: 12px 20px;
+
+    background: #d71920;
+
+    border: none;
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* PASSWORD */
+
+.password-warning {
+    display: flex;
+
+    gap: 10px;
+
+    padding: 15px;
+
+    background: #171717;
+
+    border-left: 2px solid #d71920;
+
+    color: #777;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+}
+
+
+.password-panel input {
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 13px;
+
+    background: #171717;
+
+    border: 1px solid #292929;
+
+    color: white;
+
+    outline: none;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+}
+
+
+.password-panel input:focus {
+    border-color: #d71920;
+}
+
+
+#passwordMessage {
+    color: #35c759;
+
+    font-size: 10px;
+
+    margin-top: 12px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 1000px) {
+
+    .student-info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .student-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timing-card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .student-sidebar {
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+    }
+
+    .student-nav {
+        flex-direction: row;
+
+        overflow-x: auto;
+    }
+
+    .student-nav button {
+        min-width: 120px;
+    }
+
+    .student-sidebar-bottom {
+        display: none;
+    }
+
+    .student-main {
+        margin-left: 0;
+
+        padding: 25px 15px;
+    }
+
+    .student-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-panel {
+        flex-direction: column;
+    }
+
+    .profile-details {
+        grid-template-columns: 1fr;
+    }
+
+    .timing-card {
+        grid-template-columns: 1fr;
+    }
+
+    .timing-card div {
+        border-right: none;
+        border-bottom: 1px solid #222;
+    }
+
+    .attendance-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+/* =====================================================
+   PROFILE FORM
+===================================================== */
+
+.profile-details input,
+.profile-details textarea {
+    width: 100%;
+    padding: 12px 13px;
+    background: #171717;
+    border: 1px solid #292929;
+    color: #fff;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+.profile-details input:focus,
+.profile-details textarea:focus {
+    border-color: #d71920;
+}
+
+.profile-details input[readonly] {
+    color: #777;
+    background: #131313;
+    cursor: not-allowed;
+}
+
+.profile-details input:disabled,
+.profile-details textarea:disabled {
+    color: #666;
+    background: #111;
+    cursor: not-allowed;
+}
+
+.profile-details textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.profile-details button {
+    padding: 13px 25px;
+    background: #d71920;
+    border: none;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.profile-details button:hover {
+    background: #b9141a;
+}
+
+.profile-details button:disabled {
+    background: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.profile-note {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 15px;
+    background: #171717;
+    border-left: 2px solid #d71920;
+    color: #777;
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.profile-note p {
+    margin: 0;
+}
+/* =====================================================
+   STUDENT ATTENDANCE
+===================================================== */
+
+.student-attendance-profile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.student-attendance-info {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.student-attendance-info span {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 8px;
+}
+
+.student-attendance-info strong {
+    font-size: 18px;
+}
+
+
+/* SUMMARY */
+
+.attendance-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.attendance-summary-card {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.attendance-summary-card span {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 10px;
+}
+
+.attendance-summary-card strong {
+    font-size: 26px;
+}
+
+
+/* TABLE */
+
+.student-attendance-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.student-attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.student-attendance-table th {
+    padding: 15px 18px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: 0.6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.student-attendance-table td {
+    padding: 16px 18px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.student-attendance-table tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* STATUS */
+
+.attendance-present,
+.attendance-absent {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.attendance-present {
+    background: rgba(46, 204, 113, 0.12);
+    color: #2ecc71;
+}
+
+.attendance-absent {
+    background: rgba(231, 76, 60, 0.12);
+    color: #e74c3c;
+}
+
+.attendance-loading {
+    text-align: center !important;
+    padding: 30px !important;
+    opacity: 0.6;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .student-attendance-profile {
+        grid-template-columns: 1fr;
+    }
+
+    .attendance-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .attendance-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =====================================================
+   STUDENT ATTENDANCE
+===================================================== */
+
+.student-attendance-profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.student-attendance-profile > div {
+    padding: 22px 25px;
+    background: #111;
+    border: 1px solid #222;
+}
+
+.student-attendance-profile span {
+    display: block;
+    color: #666;
+    font-size: 8px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.student-attendance-profile strong {
+    color: #ccc;
+    font-size: 12px;
+}
+
+
+/* ATTENDANCE TABLE */
+
+.student-attendance-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background: #111;
+    border: 1px solid #222;
+}
+
+.student-attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.student-attendance-table th {
+    padding: 15px 20px;
+    text-align: left;
+    color: #555;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #222;
+}
+
+.student-attendance-table td {
+    padding: 16px 20px;
+    color: #bbb;
+    font-size: 10px;
+    border-bottom: 1px solid #222;
+}
+
+.student-attendance-table tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* STATUS */
+
+.attendance-present,
+.attendance-absent {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.attendance-present {
+    color: #35c759;
+    background: rgba(53, 199, 89, 0.10);
+}
+
+.attendance-absent {
+    color: #ff453a;
+    background: rgba(255, 69, 58, 0.10);
+}
+
+
+.attendance-loading {
+    text-align: center !important;
+    padding: 35px !important;
+    color: #555 !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .student-attendance-profile {
+        grid-template-columns: 1fr;
+    }
+
+}.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo img {
+    width: 53px;
+    height: 53px;
+    object-fit: contain;
+    display: block;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo img {
+    width: 53px;
+    height: 53px;
+    object-fit: contain;
+    display: block;
+}
+
+.logo h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.logo p {
+    margin: 2px 0 0;
+    color: #666;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+#studentAnnouncementsList {
+    display: block !important;
+    width: 100%;
+}
+
+#studentAnnouncementsList .student-announcement {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+/* =====================================================
+   STUDENT ANNOUNCEMENT TEXT
+===================================================== */
+
+.student-announcement strong {
+    font-size: 12px;
+}
+
+.student-announcement p {
+    font-size: 10px;
+}
+
+.student-announcement small {
+    font-size: 8px;
+}
+.announcement-item strong {
+    font-size: 11px;
+}
+
+.announcement-item p {
+    font-size: 9px;
+}
+
+.announcement-item small {
+    font-size: 8px;
+}
+.student-messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.student-message-card {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: #111;
+    border: 1px solid #252525;
+    border-radius: 8px;
+}
+
+.student-message-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1c1c1c;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.student-message-content {
+    flex: 1;
+}
+
+.student-message-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.student-message-top strong {
+    color: #fff;
+    font-size: 15px;
+}
+
+.student-message-top span {
+    color: #888;
+    font-size: 10px;
+}
+
+.student-message-content h4 {
+    margin: 12px 0 7px;
+    color: #ddd;
+    font-size: 13px;
+}
+
+.student-message-content p {
+    margin: 0;
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.student-message-content small {
+    display: block;
+    margin-top: 10px;
+    color: #666;
+    font-size: 10px;
+}
+
+.student-message-loading,
+.student-message-empty {
+    padding: 50px 20px;
+    text-align: center;
+    color: #666;
+}

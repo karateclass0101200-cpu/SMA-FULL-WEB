@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | Sanjay Martial Arts Academy</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Student CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/student.css') }}">
+
+</head>
+
+
+<body class="student-page">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="student-sidebar">
+
+
+    <!-- BRAND -->
+
+    <div class="logo">
+    <img
+        src="{{ url_for('static', filename='images/sma-logo.jpeg') }}"
+        alt="SMA Logo"
+    >
+    <div>
+        <h2>SANJAY</h2>
+        <p>MARTIAL ARTS ACADEMY</p>
+    </div>
+</div>
+
+
+    <!-- STUDENT PROFILE -->
+
+    <div class="student-profile">
+
+        <div class="student-avatar">
+            <span>ST</span>
+        </div>
+
+        <div>
+
+            <strong id="studentName">
+                Student
+            </strong>
+
+            <span id="studentReg">
+                SMA-2026-000
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="student-nav">
+
+
+        <button
+            type="button"
+            class="active"
+            onclick="showStudentSection('overview', this)">
+
+            <span>⌂</span>
+
+            <span>
+                DASHBOARD
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showStudentSection('profile', this)">
+
+            <span>👤</span>
+
+            <span>
+                MY PROFILE
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showStudentSection('timing', this)">
+
+            <span>◷</span>
+
+            <span>
+                MY TIMING
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showStudentSection('attendance', this)">
+
+            <span>✓</span>
+
+            <span>
+                ATTENDANCE
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showStudentSection('announcements', this)">
+
+            <span>🔔</span>
+
+            <span>
+                ANNOUNCEMENTS
+            </span>
+
+        </button>
+<button onclick="showStudentSection('messages', this)">
+    <span>💬</span>
+    MESSAGES
+</button>
+
+        <button
+            type="button"
+            onclick="showStudentSection('contactAdmin', this)">
+
+            <span>✉</span>
+
+            <span>
+                CONTACT ADMIN
+            </span>
+
+        </button>
+
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="student-sidebar-bottom">
+
+
+        <button
+            type="button"
+            onclick="showStudentSection('password', this)">
+
+            <span>🔒</span>
+
+            <span>
+                CHANGE PASSWORD
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="logoutStudent()">
+
+            <span>↪</span>
+
+            <span>
+                LOGOUT
+            </span>
+
+        </button>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="student-main">
+
+
+    <!-- HEADER -->
+
+    <header class="student-header">
+
+        <div>
+
+            <span>
+                STUDENT PORTAL
+            </span>
+
+            <h1 id="studentPageTitle">
+                Dashboard
+            </h1>
+
+        </div>
+
+
+        <div class="student-status">
+
+            <i></i>
+
+            ACTIVE STUDENT
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         OVERVIEW
+    ================================================= -->
+
+    <section
+        id="overview"
+        class="student-section active-student-section">
+
+
+        <!-- WELCOME -->
+
+        <div class="student-welcome">
+
+
+            <div>
+
+                <span>
+                    WELCOME BACK
+                </span>
+
+                <h2>
+                    <span id="welcomeName">
+                        Student
+                    </span>
+                </h2>
+
+                <p>
+                    Welcome to Sanjay Martial Arts Academy
+                    Student Portal.
+                </p>
+
+            </div>
+
+
+            <div class="student-badge">
+                SMA
+            </div>
+
+
+        </div>
+
+
+
+        <!-- INFORMATION CARDS -->
+
+        <div class="student-info-grid">
+
+
+            <div class="student-info-card">
+
+                <span>
+                    REGISTRATION NUMBER
+                </span>
+
+                <strong id="overviewReg">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="student-info-card">
+
+                <span>
+                    BATCH
+                </span>
+
+                <strong id="overviewBatch">
+                    Not Assigned
+                </strong>
+
+            </div>
+
+
+            <div class="student-info-card">
+
+                <span>
+                    ATTENDANCE
+                </span>
+
+                <strong id="myAttendancePercentage">0%</strong>
+
+            </div>
+
+
+            <div class="student-info-card">
+
+                <span>
+                    STATUS
+                </span>
+
+                <strong>
+                    ACTIVE
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="student-content-grid">
+
+
+            <!-- CLASS -->
+
+            <div class="student-panel">
+
+
+                <div class="panel-title">
+
+                    <span>
+                        MY CLASS
+                    </span>
+
+                    <h3>
+                        Training Schedule
+                    </h3>
+
+                </div>
+
+
+                <div class="class-details">
+
+
+                    
+
+
+                    <div>
+
+                        <label>
+                            TRAINING TYPE
+                        </label>
+
+                        <strong id="dashboardTrainingType">
+                            Martial Arts
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            TRAINING DAYS
+                        </label>
+
+                        <strong id="dashboardTrainingDays">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            TIMING
+                        </label>
+
+                        <strong id="dashboardTiming">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+ <!-- ANNOUNCEMENT -->
+
+<div class="student-panel">
+
+    <div class="panel-title">
+
+        <span>
+            LATEST
+        </span>
+
+        <h3>
+            Announcement
+        </h3>
+
+    </div>
+
+
+    <!-- OLD HARDCODED ANNOUNCEMENT -->
+
+    <div class="announcement-item">
+
+        <div class="announcement-icon">
+            📢
+        </div>
+
+        <div>
+
+            <strong>
+                Welcome to Sanjay Martial Arts Academy
+            </strong>
+
+            <p>
+                Stay disciplined, stay focused,
+                and keep training.
+            </p>
+
+            <small>
+                Academy
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+
+    <!-- =================================================
+         PROFILE
+    ================================================= -->
+
+    <section
+        id="profile"
+        class="student-section">
+
+
+        <div class="student-section-heading">
+
+            <span>
+                PERSONAL INFORMATION
+            </span>
+
+            <h2>
+                My Profile
+            </h2>
+
+        </div>
+
+
+
+        <div class="profile-panel">
+
+
+            <!-- PHOTO -->
+
+            <div class="profile-photo">
+
+                <span>
+                    STUDENT PHOTO
+                </span>
+
+            </div>
+
+
+
+            <!-- DETAILS -->
+
+            <div class="profile-details">
+
+
+                <!-- FULL NAME -->
+
+                <div>
+
+                    <label>
+                        FULL NAME
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentFullName"
+                        readonly>
+
+                </div>
+
+
+                <!-- REGISTRATION -->
+
+                <div>
+
+                    <label>
+                        REGISTRATION NUMBER
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentRegistration"
+                        readonly>
+
+                </div>
+
+
+                <!-- DOB -->
+
+                <div>
+
+                    <label>
+                        DATE OF BIRTH
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentDOB"
+                        readonly>
+
+                </div>
+
+
+                <!-- GENDER -->
+
+                <div>
+
+                    <label>
+                        GENDER
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentGender"
+                        readonly>
+
+                </div>
+
+
+                <!-- STUDENT MOBILE -->
+
+                <div>
+
+                    <label>
+                        STUDENT MOBILE
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentMobile"
+                        placeholder="Enter mobile number">
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div>
+
+                    <label>
+                        EMAIL
+                    </label>
+
+                    <input
+                        type="email"
+                        id="studentEmail"
+                        placeholder="Enter email address">
+
+                </div>
+
+
+                <!-- PARENT -->
+
+                <div>
+
+                    <label>
+                        PARENT / GUARDIAN NAME
+                    </label>
+
+                    <input
+                        type="text"
+                        id="parentName"
+                        placeholder="Enter parent name">
+
+                </div>
+
+
+                <!-- PARENT MOBILE -->
+
+                <div>
+
+                    <label>
+                        PARENT MOBILE
+                    </label>
+
+                    <input
+                        type="text"
+                        id="parentMobile"
+                        placeholder="Enter parent mobile">
+
+                </div>
+
+
+                <!-- EMERGENCY -->
+
+                <div>
+
+                    <label>
+                        EMERGENCY CONTACT
+                    </label>
+
+                    <input
+                        type="text"
+                        id="emergencyContact"
+                        placeholder="Enter emergency contact">
+
+                </div>
+
+
+                <!-- EXPERIENCE -->
+
+                <div>
+
+                    <label>
+                        EXPERIENCE
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentExperience"
+                        readonly>
+
+                </div>
+
+
+                <!-- PREVIOUS TRAINING -->
+
+                <div>
+
+                    <label>
+                        PREVIOUS TRAINING
+                    </label>
+
+                    <input
+                        type="text"
+                        id="previousTraining"
+                        readonly>
+
+                </div>
+
+
+
+
+                <!-- ADDRESS -->
+
+                <div style="grid-column: 1 / -1;">
+
+                    <label>
+                        ADDRESS
+                    </label>
+
+                    <textarea
+                        id="studentAddress"
+                        rows="4"
+                        placeholder="Enter address"></textarea>
+
+                </div>
+
+
+                <!-- SAVE -->
+
+                <div style="grid-column: 1 / -1;">
+
+                    <button
+                        type="button"
+                        id="saveProfileButton"
+                        onclick="saveStudentProfile()">
+
+                        SAVE PROFILE
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- PROFILE NOTE -->
+
+        <div class="profile-note">
+
+            <span>
+                ⚠
+            </span>
+
+            <p>
+                You can update your editable profile details
+                only once. For further changes, please contact
+                the Admin or Timing Master.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         TIMING
+    ================================================= -->
+
+    <section
+        id="timing"
+        class="student-section">
+
+
+        <div class="student-section-heading">
+
+            <span>
+                TRAINING SCHEDULE
+            </span>
+
+            <h2>
+                My Timing
+            </h2>
+
+        </div>
+
+
+
+        <div class="timing-card">
+
+
+            <div>
+
+                <span>
+                    BATCH
+                </span>
+
+                <strong id="timingBatch">
+                    Not Assigned
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    TRAINING TYPE
+                </span>
+
+                <strong id="timingTrainingType">
+                    Martial Arts
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    START TIME
+                </span>
+
+                <strong id="timingStart">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    END TIME
+                </span>
+
+                <strong id="timingEnd">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    DAYS
+                </span>
+
+                <strong id="timingDays">
+                    -
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+<!-- =====================================================
+     ATTENDANCE
+===================================================== -->
+
+<section id="attendance"
+         class="student-section">
+
+    <div class="student-section-heading">
+
+        <span>ATTENDANCE RECORD</span>
+
+        <h2>My Attendance</h2>
+
+    </div>
+
+
+    <!-- STUDENT DETAILS -->
+
+    <div class="student-attendance-profile">
+
+        <div>
+            <span>STUDENT NAME</span>
+            <strong id="attendanceStudentName">
+                -
+            </strong>
+        </div>
+
+        <div>
+            <span>USER ID</span>
+            <strong id="attendanceStudentUserId">
+                -
+            </strong>
+        </div>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="attendance-summary">
+
+        <div>
+            <span>OVERALL ATTENDANCE</span>
+
+            <strong id="attendancePercentage">
+                0%
+            </strong>
+        </div>
+
+
+        <div>
+            <span>PRESENT</span>
+
+            <strong id="attendancePresentDays">
+                0
+            </strong>
+        </div>
+
+
+        <div>
+            <span>ABSENT</span>
+
+            <strong id="attendanceAbsentDays">
+                0
+            </strong>
+        </div>
+
+
+        <div>
+            <span>TOTAL CLASSES</span>
+
+            <strong id="attendanceTotalDays">
+                0
+            </strong>
+        </div>
+
+    </div>
+
+
+    <!-- ATTENDANCE TABLE -->
+
+    <div class="student-attendance-table-wrapper">
+
+        <table class="student-attendance-table">
+
+            <thead>
+
+                <tr>
+                    <th>DATE</th>
+                    <th>STATUS</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody id="studentAttendanceTableBody">
+
+                <tr>
+
+                    <td colspan="2"
+                        class="attendance-loading">
+
+                        Loading attendance...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+    <!-- =================================================
+         ANNOUNCEMENTS
+    ================================================= -->
+
+    <section
+        id="announcements"
+        class="student-section">
+
+
+        <div class="student-section-heading">
+
+            <span>
+                ACADEMY UPDATES
+            </span>
+
+            <h2>
+                Announcements
+            </h2>
+
+        </div>
+
+
+
+        <div
+    id="studentAnnouncementsList"
+    class="student-announcements-list"
+>
+
+    <div class="student-announcement">
+
+        <span>
+            📢
+        </span>
+
+        <div>
+
+            <strong>
+                Loading announcements...
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+    </section>
+<!-- MESSAGES -->
+
+<section id="messages" class="student-section">
+
+    <div class="student-section-heading">
+
+        <span>
+            COMMUNICATION
+        </span>
+
+        <h2>
+            Messages
+        </h2>
+
+    </div>
+
+    <div
+        id="studentMessagesList"
+        class="student-messages-list"
+    >
+
+        <div class="student-message-loading">
+            Loading messages...
+        </div>
+
+    </div>
+
+</section>
+
+
+   <!-- =================================================
+     CONTACT ADMIN
+================================================= -->
+
+<section
+    id="contactAdmin"
+    class="student-section">
+
+    <div class="student-section-heading">
+
+        <span>
+            SUPPORT
+        </span>
+
+        <h2>
+            Contact Admin
+        </h2>
+
+    </div>
+
+    <div class="message-panel">
+
+        <label>
+            MESSAGE
+        </label>
+
+        <textarea
+            id="studentMessage"
+            placeholder="Write your message to Admin..."
+        ></textarea>
+
+        <button
+            type="button"
+            onclick="sendStudentMessage()"
+        >
+            SEND MESSAGE
+        </button>
+
+    </div>
+
+</section>
+
+
+
+    <!-- =================================================
+         CHANGE PASSWORD
+    ================================================= -->
+
+    <section
+        id="password"
+        class="student-section">
+
+
+        <div class="student-section-heading">
+
+            <span>
+                ACCOUNT SECURITY
+            </span>
+
+            <h2>
+                Change Password
+            </h2>
+
+        </div>
+
+
+
+        <div class="password-panel">
+
+
+            <div class="password-warning">
+
+                <span>
+                    ⚠
+                </span>
+
+                <div>
+
+                    Enter your current password and
+                    create a new password.
+
+                    <br>
+
+                    If you forget your current password,
+                    contact the Academy Admin.
+
+                </div>
+
+            </div>
+
+
+
+            <label>
+                CURRENT PASSWORD
+            </label>
+
+            <input
+                type="password"
+                id="currentPassword"
+                placeholder="Enter current password">
+
+
+
+            <label>
+                NEW PASSWORD
+            </label>
+
+            <input
+                type="password"
+                id="newPassword"
+                placeholder="Minimum 8 characters">
+
+
+
+            <label>
+                CONFIRM NEW PASSWORD
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm new password">
+
+
+
+            <button
+                type="button"
+                onclick="changeStudentPassword()">
+
+                CHANGE PASSWORD
+
+            </button>
+
+
+            <div id="passwordMessage"></div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="{{ url_for('static', filename='js/student.js') }}"></script>
+
+
+</body>
+
+</html>

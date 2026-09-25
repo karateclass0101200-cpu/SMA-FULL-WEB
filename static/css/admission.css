@@ -1,0 +1,871 @@
+/* =========================================================
+   SANJAY MARTIAL ARTS ACADEMY
+   ADMISSION APPLICATION
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #080808;
+    --black-soft: #111111;
+    --panel: #151515;
+    --panel-light: #1c1c1c;
+
+    --white: #ffffff;
+    --text: #eeeeee;
+    --muted: #999999;
+
+    --gold: #d4af37;
+    --gold-light: #f0d77a;
+    --gold-dark: #a88720;
+
+    --border: rgba(212, 175, 55, 0.22);
+    --danger: #ff5c5c;
+    --success: #55d68a;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--black);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.admission-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(212, 175, 55, 0.08),
+            transparent 35%
+        ),
+        var(--black);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.admission-header {
+    width: 100%;
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 6%;
+
+    background: rgba(8, 8, 8, 0.96);
+
+    border-bottom: 1px solid var(--border);
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* Academy Brand */
+
+.academy-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.academy-logo {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--gold);
+
+    color: var(--gold);
+
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    border-radius: 50%;
+}
+
+.academy-brand h1 {
+    color: var(--white);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.academy-brand p {
+    margin-top: 5px;
+
+    color: var(--gold);
+
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+
+/* Back Button */
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.application-container {
+    width: min(1100px, 92%);
+
+    margin: 0 auto;
+
+    padding: 65px 0 80px;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.application-intro {
+    text-align: center;
+
+    max-width: 750px;
+
+    margin: 0 auto 45px;
+}
+
+.application-intro > span {
+    color: var(--gold);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.application-intro h2 {
+    margin-top: 12px;
+
+    color: var(--white);
+
+    font-size: clamp(30px, 5vw, 48px);
+
+    line-height: 1.1;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+.application-intro p {
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   FORM SECTION
+   ========================================================= */
+
+.form-section {
+    margin-bottom: 28px;
+
+    padding: 32px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.015)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 8px;
+}
+
+
+/* Section title */
+
+.section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section-title > span {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--gold);
+
+    color: var(--gold);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    border-radius: 50%;
+}
+
+.section-title small {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.section-title h3 {
+    color: var(--white);
+
+    font-size: 22px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* Labels */
+
+.form-group label {
+    margin-bottom: 9px;
+
+    color: #dddddd;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.1px;
+}
+
+.form-group label span {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    background: #0d0d0d;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 4px;
+
+    color: var(--white);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Placeholder */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #666666;
+}
+
+
+/* Focus */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    background: #111111;
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 0 3px rgba(212, 175, 55, 0.08);
+}
+
+
+/* Select */
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: #111111;
+    color: #ffffff;
+}
+
+
+/* Textarea */
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 100px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FILE INPUT
+   ========================================================= */
+
+.form-group input[type="file"] {
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    margin-right: 12px;
+
+    padding: 9px 14px;
+
+    background: var(--gold);
+
+    border: none;
+
+    border-radius: 3px;
+
+    color: #080808;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.input-help {
+    margin-top: 7px;
+
+    color: #666666;
+
+    font-size: 11px;
+}
+
+
+
+/* =========================================================
+   DECLARATION
+   ========================================================= */
+
+.declaration-section {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212, 175, 55, 0.055),
+            rgba(255, 255, 255, 0.015)
+        );
+}
+
+.declaration-box {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.declaration-box input {
+    width: 18px;
+    height: 18px;
+
+    margin-top: 2px;
+
+    flex-shrink: 0;
+
+    accent-color: var(--gold);
+
+    cursor: pointer;
+}
+
+.declaration-box span {
+    color: #aaaaaa;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.application-message {
+    display: none;
+
+    margin-bottom: 20px;
+
+    padding: 14px 16px;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.application-message.show {
+    display: block;
+}
+
+.application-message.error {
+    color: #ff9a9a;
+
+    background: rgba(255, 70, 70, 0.08);
+
+    border: 1px solid rgba(255, 70, 70, 0.25);
+}
+
+.application-message.success {
+    color: #8ce6ad;
+
+    background: rgba(70, 200, 120, 0.08);
+
+    border: 1px solid rgba(70, 200, 120, 0.25);
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+   ========================================================= */
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+
+/* Cancel */
+
+.cancel-btn {
+    min-height: 50px;
+
+    padding: 0 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 4px;
+
+    color: #bbbbbb;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition: 0.25s ease;
+}
+
+.cancel-btn:hover {
+    border-color: #777777;
+
+    color: white;
+}
+
+
+/* Submit */
+
+.submit-btn {
+    min-height: 50px;
+
+    padding: 0 28px;
+
+    background: linear-gradient(
+        135deg,
+        var(--gold-light),
+        var(--gold)
+    );
+
+    border: none;
+
+    border-radius: 4px;
+
+    color: #080808;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.2px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(212, 175, 55, 0.18);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.admission-footer {
+    padding: 25px 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    text-align: center;
+}
+
+.admission-footer p {
+    color: #666666;
+
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .admission-header {
+        padding: 16px 5%;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .academy-brand h1 {
+        font-size: 14px;
+    }
+
+    .academy-brand p {
+        font-size: 9px;
+    }
+
+    .academy-logo {
+        width: 46px;
+        height: 46px;
+
+        font-size: 14px;
+    }
+
+    .back-btn {
+        font-size: 10px;
+
+        padding: 0 12px;
+    }
+
+    .application-container {
+        width: 92%;
+
+        padding: 45px 0 60px;
+    }
+
+    .form-section {
+        padding: 25px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .application-intro {
+        margin-bottom: 35px;
+    }
+
+    .application-intro h2 {
+        font-size: 34px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .admission-header {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .academy-brand {
+        align-items: flex-start;
+    }
+
+    .back-btn {
+        width: 100%;
+    }
+
+    .application-container {
+        width: 94%;
+
+        padding-top: 35px;
+    }
+
+    .application-intro h2 {
+        font-size: 29px;
+    }
+
+    .application-intro p {
+        font-size: 13px;
+    }
+
+    .form-section {
+        padding: 22px 16px;
+
+        border-radius: 6px;
+    }
+
+    .section-title {
+        gap: 11px;
+
+        margin-bottom: 24px;
+    }
+
+    .section-title > span {
+        width: 36px;
+        height: 36px;
+
+        font-size: 11px;
+    }
+
+    .section-title h3 {
+        font-size: 18px;
+    }
+
+    .section-title small {
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .days-container {
+        gap: 7px;
+    }
+
+    .day-option span {
+        min-width: 50px;
+
+        height: 40px;
+
+        padding: 0 8px;
+
+        font-size: 10px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+
+        width: 100%;
+    }
+
+    .cancel-btn,
+    .submit-btn {
+        width: 100%;
+    }
+
+    .declaration-box {
+        padding: 14px;
+
+        gap: 10px;
+    }
+
+    .declaration-box span {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .academy-brand h1 {
+        font-size: 12px;
+    }
+
+    .application-intro h2 {
+        font-size: 26px;
+    }
+
+    .form-section {
+        padding: 18px 13px;
+    }
+
+    .day-option span {
+        min-width: 46px;
+
+        font-size: 9px;
+    }
+}

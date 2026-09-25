@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Sanjay Martial Arts Academy</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/login.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-brand">
+
+            <div class="brand-logo">
+                SMA
+            </div>
+
+            <h1>
+                SANJAY
+                <span>MARTIAL ARTS ACADEMY</span>
+            </h1>
+
+            <p>
+                DISCIPLINE • FITNESS • CONFIDENCE • SELF DEFENCE
+            </p>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="login-box">
+
+            <a href="/" class="back-home">
+                ← Back to Home
+            </a>
+
+            <div class="login-header">
+
+                <p>ACADEMY PORTAL</p>
+
+                <h2>WELCOME BACK</h2>
+
+                <span>
+                    Login to access your dashboard
+                </span>
+
+            </div>
+
+
+            <!-- USER ID -->
+
+            <div class="form-group">
+
+                <label>USER ID</label>
+
+                <input
+                    type="text"
+                    id="userId"
+                    placeholder="Enter your User ID"
+                    autocomplete="username"
+                >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label>PASSWORD</label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                    >
+
+                    <button
+                        type="button"
+                        onclick="togglePassword()"
+                        class="show-password">
+                        SHOW
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN ERROR -->
+
+            <div id="loginError" class="login-error"></div>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="button"
+                class="login-submit"
+                onclick="loginUser()">
+                LOGIN
+            </button>
+
+
+            <!-- FORGOT PASSWORD -->
+
+            <div class="forgot-password">
+
+                <span>Forgot your password?</span>
+
+                <button
+                    type="button"
+                    onclick="showResetMessage()">
+                    Contact Admin
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN NOTE -->
+
+            <div class="login-note">
+
+                <strong>Important:</strong>
+
+                <span>
+                    Students cannot reset forgotten passwords themselves.
+                    Please contact the academy administrator.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+</body>
+
+</html>
