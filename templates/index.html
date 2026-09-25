@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sanjay Martial Arts Academy</title>
+    <link rel="stylesheet"href="{{ url_for('static', filename='css/style.css') }}">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <img
+    src="{{ url_for('static', filename='images/sma-logo.jpeg') }}"
+    alt="SMA Logo"
+>
+            <div>
+                <h2>SANJAY</h2>
+                <p>MARTIAL ARTS ACADEMY</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#programs">Programs</a>
+            <a href="#timings">Timings</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="login" class="login-btn">
+            LOGIN
+        </a>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-overlay"></div>
+<div class="hero-content">
+
+    <p class="hero-small">
+        DISCIPLINE • FITNESS • CONFIDENCE • SELF DEFENCE
+    </p>
+
+    <div class="hero-brand-image">
+        <img
+            src="{{ url_for('static', filename='images/hero-image.png') }}"
+            alt="Sanjay Martial Arts Academy"
+        >
+    </div>
+
+    <p class="hero-description">
+        Building strength, discipline and confidence
+        through professional martial arts training.
+    </p>
+
+    <div class="hero-buttons">
+
+                <button
+    class="admission-btn"
+    onclick="window.open('https://forms.gle/x2bGoSSnT5KdVR246', '_blank')">
+    ADMISSIONS OPEN
+</button>
+<a href="/admission" class="application-form-btn">
+    APPLICATION FORM
+</a>
+
+                <a href="#programs" class="secondary-btn">
+                    EXPLORE PROGRAMS
+                </a>
+
+            </div>
+
+            <div class="hero-info">
+
+                <div>
+                    <strong>4+</strong>
+                    <span>AGE GROUP</span>
+                </div>
+
+                <div>
+                    <strong>BOYS & GIRLS</strong>
+                    <span>WELCOME</span>
+                </div>
+
+                <div>
+                    <strong>FITNESS</strong>
+                    <span>& DISCIPLINE</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about" class="about section">
+
+        <div class="section-title">
+
+            <p>ABOUT US</p>
+
+            <h2>
+                TRAIN YOUR BODY.
+                <span>BUILD YOUR MIND.</span>
+            </h2>
+
+        </div>
+
+        <div class="about-content">
+
+            <div class="about-text">
+
+                <p>
+                    Sanjay Martial Arts Academy is dedicated to
+                    developing physical fitness, discipline,
+                    confidence and practical self-defence skills.
+                </p>
+
+                <p>
+                    Our training environment is designed for
+                    children, teenagers and adults, with structured
+                    training sessions suitable for different
+                    experience levels.
+                </p>
+
+                <a href="#contact" class="outline-btn">
+                    CONTACT US
+                </a>
+
+            </div>
+
+            <div class="about-cards">
+
+                <div class="feature-card">
+                    <div class="feature-icon">🥋</div>
+                    <h3>DISCIPLINE</h3>
+                    <p>Develop focus and self-control.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>FITNESS</h3>
+                    <p>Improve strength and endurance.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>SELF DEFENCE</h3>
+                    <p>Learn practical defensive skills.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h3>CONFIDENCE</h3>
+                    <p>Build confidence through training.</p>
+                </div>
+
+            </div>
+
+        </div>
+        <section id="about" class="about-section">
+    <div class="about-container">
+
+        <!-- MASTER DETAILS -->
+        <div class="about-content">
+            <span class="about-label">ABOUT THE MASTER</span>
+
+            <h2>SENSAI: SANJAY PRASHAD</h2>
+
+            <p class="about-qualification">
+                B.Sc, B.Ed, M.B.A.
+            </p>
+
+            <div class="master-details">
+                <p>
+                    <strong>3RD DAN BLACK BELT</strong><br>
+                    JAPAN SHITO RYU KARATE DO INDIA
+                </p>
+
+                <p>
+                    <strong>KIO - NATIONAL JUDGE</strong>
+                </p>
+
+                <p>
+                    <strong>COACHING DIRECTOR</strong><br>
+                    RANIPET DISTRICT KARATE ASSOCIATION
+                </p>
+            </div>
+
+            <p class="master-description">
+                With a strong focus on discipline, technique,
+                fitness and confidence, the academy provides
+                structured martial arts training for students
+                of different age groups.
+            </p>
+        </div>
+
+        <!-- MASTER PHOTO -->
+        <div class="about-photo">
+            <img
+                src="{{ url_for('static', filename='images/master-photo.jpg') }}"
+                alt="Sensei Sanjay Prashad"
+            >
+        </div>
+
+    </div>
+</section>
+    <!-- ================= PROGRAMS ================= -->
+
+    <section id="programs" class="programs section">
+
+        <div class="section-title center">
+
+            <p>OUR TRAINING</p>
+
+            <h2>
+                TRAINING <span>PROGRAMS</span>
+            </h2>
+
+        </div>
+
+        <div class="program-grid">
+
+            <div class="program-card">
+                <span class="program-number">01</span>
+                <h3>KARATE</h3>
+                <p>
+                    Traditional martial arts training focused on
+                    technique, discipline and controlled movement.
+                </p>
+                <a href="#contact">LEARN MORE →</a>
+            </div>
+
+            <div class="program-card">
+                <span class="program-number">02</span>
+                <h3>SELF DEFENCE</h3>
+                <p>
+                    Practical training to develop awareness,
+                    defensive techniques and confidence.
+                </p>
+                <a href="#contact">LEARN MORE →</a>
+            </div>
+
+            <div class="program-card">
+                <span class="program-number">03</span>
+                <h3>FITNESS</h3>
+                <p>
+                    Strength, flexibility, stamina and
+                    conditioning through martial arts exercises.
+                </p>
+                <a href="#contact">LEARN MORE →</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TIMINGS ================= -->
+
+    <section id="timings" class="timings section">
+
+        <div class="section-title center">
+
+            <p>TRAINING SCHEDULE</p>
+
+            <h2>
+                CLASSES & <span>TIMINGS</span>
+            </h2>
+
+        </div>
+
+        <div class="timing-box">
+
+            <div class="timing-row">
+                <strong>WEDNESDAY</strong>
+                <span>6:00-7:30</span>
+            </div>
+
+            <div class="timing-row">
+                <strong>SATURDAY</strong>
+                <span>6:00-7:30</span>
+            </div>
+
+            <div class="timing-row">
+                <strong>SUNDAY</strong>
+                <span>6:00-9:00</span>
+            </div>
+
+        </div>
+
+        <p class="timing-note">
+            Exact batch timings will be provided after admission.
+        </p>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta">
+
+        <div>
+
+            <p>READY TO START YOUR JOURNEY?</p>
+
+            <h2>
+                BECOME STRONGER.
+                <span>BE MORE CONFIDENT.</span>
+            </h2>
+
+            <a href="#" class="primary-btn">
+                APPLY FOR ADMISSION
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact" class="contact section">
+
+        <div class="section-title center">
+
+            <p>GET IN TOUCH</p>
+
+            <h2>
+                CONTACT <span>US</span>
+            </h2>
+
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+                <span>📍</span>
+                <h3>LOCATION</h3>
+                <p>YOUNG MASTER'S BADMINTON ACADEMY- INDRA NAGAR, THAZHANUR ROAD, TNHB PHASE 1, NEAR KANAMANGALAM KOOT ROAD-ARCOT.</p>
+<a
+    href="https://www.google.com/maps/search/?api=1&query=12.900012965168498, 79.31092618741455"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="location-btn">
+    📍 CLICK HERE FOR EXCAT LOCATION
+</a>
+            </div>
+
+            <div class="contact-card">
+                <span>📞</span>
+                <h3>PHONE</h3>
+                <p>+91 XXXXX XXXXX</p>
+            </div>
+
+            <div class="contact-card">
+                <span>✉️</span>
+                <h3>EMAIL</h3>
+                <p>karateclass0101200@gmail.com</p>
+<a
+    href="mailto:karateclass0101200@gmail.com"
+    class="contact-btn">
+    ✉ EMAIL US
+</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            SANJAY MARTIAL ARTS ACADEMY
+        </div>
+
+        <p>
+            DISCIPLINE • FITNESS • CONFIDENCE • SELF DEFENCE
+        </p>
+
+        <p class="copyright">
+            © 2026 Sanjay Martial Arts Academy. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

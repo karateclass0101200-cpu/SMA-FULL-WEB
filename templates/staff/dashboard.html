@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Timing Master | SMA</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/staff.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+
+<body class="staff-page">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="staff-sidebar">
+
+
+    <div class="logo">
+    <img
+        src="{{ url_for('static', filename='images/sma-logo.jpeg') }}"
+        alt="SMA Logo"
+    >
+    <div>
+        <h2>SANJAY</h2>
+        <p>MARTIAL ARTS ACADEMY</p>
+    </div>
+</div>
+
+
+
+    <div class="staff-profile">
+
+        <div class="staff-avatar">
+            T
+        </div>
+
+        <div>
+
+            <strong id="staffName">
+                Timing Master
+            </strong>
+
+            <span>
+                TIMING MASTER
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <nav class="staff-nav">
+
+
+        <button
+            type="button"
+            class="active"
+            onclick="showStaffSection('overview', this)">
+
+            🏠
+
+            <span>
+                Dashboard
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showStaffSection('students', this)">
+
+            👥
+
+            <span>
+                Students
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showStaffSection('attendance', this)">
+
+            ✓
+
+            <span>
+                Attendance
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showStaffSection('announcements', this)">
+
+            📢
+
+            <span>
+                Announcements
+            </span>
+
+        </button>
+        <button onclick="showStaffSection('student360', this)">
+    <span>🔄</span>
+    STUDENT 360
+</button>
+
+    </nav>
+
+
+
+    <div class="staff-bottom">
+
+
+        <button
+            type="button"
+            onclick="showStaffSection('password', this)">
+
+            🔐 Change Password
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="logoutStaff()">
+
+            ↪ Logout
+
+        </button>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="staff-main">
+
+
+    <!-- HEADER -->
+
+    <header class="staff-header">
+
+        <div>
+
+            <span>
+                TIMING MASTER PORTAL
+            </span>
+
+            <h1 id="staffPageTitle">
+                Dashboard
+            </h1>
+
+        </div>
+
+
+        <div class="staff-status">
+            ● ACTIVE
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         OVERVIEW
+    ================================================= -->
+
+    <section
+        id="overview"
+        class="staff-section active-staff-section">
+
+
+        <div class="staff-welcome">
+
+            <span>
+                WELCOME
+            </span>
+
+            <h2>
+                Timing Master Dashboard
+            </h2>
+
+            <p>
+                Manage your assigned batch and
+                student attendance.
+            </p>
+
+        </div>
+
+
+
+        <div class="staff-stats">
+
+
+            <div>
+
+                <span>
+                    MY BATCH
+                </span>
+
+                <strong id="overviewBatch">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    STUDENTS
+                </span>
+
+                <strong id="overviewStudentCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    TODAY'S CLASS
+                </span>
+
+                <strong id="overviewClassTime">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    ATTENDANCE
+                </span>
+
+                <strong id="overviewAttendance">
+                    0%
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="staff-panel">
+
+            <span>
+                QUICK ACTION
+            </span>
+
+            <h3>
+                Today's Attendance
+            </h3>
+
+            <p>
+                Mark attendance for students
+                in your assigned batch.
+            </p>
+
+            <button
+                type="button"
+                onclick="showStaffSection('attendance')">
+
+                MARK ATTENDANCE
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         MY BATCH
+    ================================================= -->
+
+    <section
+        id="batch"
+        class="staff-section">
+
+
+        <div class="staff-heading">
+
+            <span>
+                TRAINING
+            </span>
+
+            <h2>
+                My Batch
+            </h2>
+
+        </div>
+
+
+
+        <div class="batch-card">
+
+
+            <div>
+
+                <span>
+                    BATCH NAME
+                </span>
+
+                <strong id="batchName">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    TIME
+                </span>
+
+                <strong id="batchTime">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    DAYS
+                </span>
+
+                <strong id="batchDays">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    STUDENTS
+                </span>
+
+                <strong id="batchStudentCount">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         STUDENTS
+    ================================================= -->
+
+ 
+
+<section
+    id="students"
+    class="staff-section">
+
+    <div class="staff-heading">
+
+      
+
+        <h2>
+            Students
+        </h2>
+
+    </div>
+
+
+    <div class="staff-students-table-wrapper">
+
+        <table class="staff-students-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>PHOTO</th>
+
+                    <th>STUDENT</th>
+
+                    <th>ATTENDANCE</th>
+                    
+                    <th>USER ID</th>
+
+                    <th>REGISTRATION NO.</th>
+
+                    <th>MOBILE</th>
+
+                    <th>STATUS</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="staffStudentTableBody">
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        class="staff-students-loading">
+
+                        Loading students...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     ATTENDANCE
+================================================= -->
+
+<section
+    id="attendance"
+    class="staff-section">
+
+    <div class="staff-heading">
+
+        <span>
+            DAILY RECORD
+        </span>
+
+        <h2>
+            Attendance
+        </h2>
+
+    </div>
+
+
+    <!-- ATTENDANCE CONTROLS -->
+
+    <div class="attendance-controls">
+
+        <div class="attendance-control">
+
+            <label>
+                SELECT DATE
+            </label>
+
+            <input
+                type="date"
+                id="attendanceDate">
+
+        </div>
+
+    </div>
+
+
+    <!-- ATTENDANCE SUMMARY -->
+
+    <div class="attendance-summary">
+
+        <div>
+
+            <span>
+                PRESENT
+            </span>
+
+            <strong id="presentCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                ABSENT
+            </span>
+
+            <strong id="absentCount">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUICK BUTTONS -->
+
+    <div class="attendance-actions">
+
+        <button
+            type="button"
+            onclick="markAllPresent()">
+
+            ✓ MARK ALL PRESENT
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="markAllAbsent()">
+
+            ✕ MARK ALL ABSENT
+
+        </button>
+
+
+        <button
+            type="button"
+            onclick="loadAttendance()">
+
+            ↻ LOAD ATTENDANCE
+
+        </button>
+
+    </div>
+
+
+    <!-- STUDENT LIST -->
+
+    <div
+        id="attendanceStudentList"
+        class="attendance-student-list">
+
+        <div class="attendance-empty">
+
+            ✓
+
+            <h3>
+                Attendance List
+            </h3>
+
+            <p>
+                Select a date to load students.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SAVE -->
+
+    <div class="attendance-save-area">
+
+        <button
+            type="button"
+            id="saveAttendanceButton"
+            onclick="saveAttendance()">
+
+            SUBMIT ATTENDANCE
+
+        </button>
+
+    </div>
+
+</section>
+
+    <!-- =================================================
+     ANNOUNCEMENTS
+================================================= -->
+
+<section
+    id="announcements"
+    class="staff-section"
+>
+
+    <div class="staff-heading">
+
+        <span>
+            ACADEMY UPDATES
+        </span>
+
+        <h2>
+            Announcements
+        </h2>
+
+    </div>
+
+
+    <div
+        id="staffAnnouncementsList"
+        class="staff-announcements-list"
+    >
+
+        <div class="staff-announcement-loading">
+            Loading announcements...
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- STUDENT 360 -->
+
+<section id="student360" class="staff-section">
+
+    <div class="staff-heading">
+        <span>STUDENT MANAGEMENT</span>
+        <h2>Student 360</h2>
+    </div>
+
+    <div class="staff-student360-search">
+
+        <input
+            type="text"
+            id="staffStudent360Search"
+            placeholder="Search student name or registration number..."
+            autocomplete="off"
+        >
+
+        <button
+            type="button"
+            onclick="searchStaffStudent360()"
+        >
+            🔍 SEARCH
+        </button>
+
+    </div>
+
+    <div
+        id="staffStudent360Results"
+        class="staff-student360-results"
+    >
+        <p>Search for a student to view their profile.</p>
+    </div>
+
+    <div
+        id="staffStudent360Profile"
+        class="staff-student360-profile"
+    >
+    </div>
+
+</section>
+
+    <!-- =================================================
+         CHANGE PASSWORD
+    ================================================= -->
+
+    <section
+        id="password"
+        class="staff-section">
+
+
+        <div class="staff-heading">
+
+            <span>
+                ACCOUNT SECURITY
+            </span>
+
+            <h2>
+                Change Password
+            </h2>
+
+        </div>
+
+
+
+        <div class="staff-password">
+
+
+            <label>
+                Current Password
+            </label>
+
+            <input
+                type="password"
+                id="staffCurrentPassword"
+                placeholder="Current password">
+
+
+
+            <label>
+                New Password
+            </label>
+
+            <input
+                type="password"
+                id="staffNewPassword"
+                placeholder="New password">
+
+
+
+            <label>
+                Confirm New Password
+            </label>
+
+            <input
+                type="password"
+                id="staffConfirmPassword"
+                placeholder="Confirm password">
+
+
+
+            <button
+                type="button"
+                onclick="changeStaffPassword()">
+
+                CHANGE PASSWORD
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="{{ url_for('static', filename='js/staff.js') }}"></script>
+
+
+</body>
+
+</html>

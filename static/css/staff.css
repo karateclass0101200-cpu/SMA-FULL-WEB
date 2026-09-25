@@ -1,0 +1,1665 @@
+/* =========================================
+   TIMING MASTER DASHBOARD
+   ========================================= */
+
+.staff-page {
+    background: #080808;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   SIDEBAR
+   ========================================= */
+
+.staff-sidebar {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #0d0d0d;
+
+    border-right: 1px solid #222;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 100;
+}
+
+
+/* BRAND */
+
+.staff-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 25px 20px;
+
+    border-bottom: 1px solid #222;
+}
+
+
+.staff-brand > div {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #d71920;
+
+    color: white;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.staff-brand section {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.staff-brand strong {
+    color: #fff;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 18px;
+
+    letter-spacing: 1px;
+}
+
+
+.staff-brand span {
+    color: #666;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================
+   STAFF PROFILE
+   ========================================= */
+
+.staff-profile {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 22px 20px;
+
+    border-bottom: 1px solid #222;
+}
+
+
+.staff-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #222;
+
+    color: #d71920;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 17px;
+
+    border: 1px solid #333;
+}
+
+
+.staff-profile div:last-child {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.staff-profile strong {
+    color: #ddd;
+
+    font-size: 11px;
+}
+
+
+.staff-profile span {
+    color: #d71920;
+
+    font-size: 8px;
+
+    margin-top: 4px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+.staff-nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 18px 12px;
+}
+
+
+.staff-nav button,
+.staff-bottom button {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 12px;
+
+    background: transparent;
+
+    border: none;
+
+    border-left: 2px solid transparent;
+
+    color: #777;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.staff-nav button:hover,
+.staff-nav button.active,
+.staff-bottom button:hover {
+
+    background: #171717;
+
+    color: #fff;
+
+    border-left-color: #d71920;
+}
+
+
+.staff-nav button:first-letter {
+    font-size: 15px;
+}
+
+
+/* =========================================
+   BOTTOM
+   ========================================= */
+
+.staff-bottom {
+
+    margin-top: auto;
+
+    padding: 15px 12px;
+
+    border-top: 1px solid #222;
+}
+
+
+/* =========================================
+   MAIN AREA
+   ========================================= */
+
+.staff-main {
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 45px;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.staff-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+
+.staff-header span {
+
+    color: #d71920;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+}
+
+
+.staff-header h1 {
+
+    color: #fff;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 35px;
+
+    font-weight: 600;
+
+    margin-top: 5px;
+}
+
+
+.staff-status {
+
+    color: #35c759 !important;
+
+    font-size: 9px !important;
+
+    letter-spacing: 1px !important;
+}
+
+
+/* =========================================
+   SECTIONS
+   ========================================= */
+
+.staff-section {
+
+    display: none;
+}
+
+
+.active-staff-section {
+
+    display: block;
+}
+
+
+/* =========================================
+   WELCOME
+   ========================================= */
+
+.staff-welcome {
+
+    padding: 35px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #171717,
+            #101010
+        );
+
+    border: 1px solid #252525;
+
+    margin-bottom: 20px;
+}
+
+
+.staff-welcome > span {
+
+    color: #d71920;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+
+.staff-welcome h2 {
+
+    color: #fff;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 32px;
+
+    margin: 8px 0;
+}
+
+
+.staff-welcome p {
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   STAT CARDS
+   ========================================= */
+
+.staff-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.staff-stats > div {
+
+    padding: 23px;
+
+    background: #111;
+
+    border: 1px solid #222;
+
+    transition: 0.25s;
+}
+
+
+.staff-stats > div:hover {
+
+    border-color: #d71920;
+
+    transform: translateY(-2px);
+}
+
+
+.staff-stats span {
+
+    display: block;
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+
+.staff-stats strong {
+
+    color: #ddd;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 21px;
+}
+
+
+/* =========================================
+   QUICK ACTION PANEL
+   ========================================= */
+
+.staff-panel {
+
+    padding: 30px;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.staff-panel > span {
+
+    color: #d71920;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.staff-panel h3 {
+
+    color: #fff;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 24px;
+
+    margin-top: 5px;
+}
+
+
+.staff-panel p {
+
+    color: #666;
+
+    font-size: 10px;
+
+    margin-top: 8px;
+}
+
+
+.staff-panel button {
+
+    margin-top: 20px;
+
+    padding: 12px 20px;
+
+    background: #d71920;
+
+    border: none;
+
+    color: #fff;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.staff-panel button:hover {
+
+    background: #f02028;
+}
+
+
+/* =========================================
+   SECTION HEADINGS
+   ========================================= */
+
+.staff-heading {
+
+    margin-bottom: 25px;
+}
+
+
+.staff-heading span {
+
+    color: #d71920;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.staff-heading h2 {
+
+    color: #fff;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 35px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   BATCH CARD
+   ========================================= */
+
+.batch-card {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.batch-card > div {
+
+    padding: 30px 22px;
+
+    border-right: 1px solid #222;
+}
+
+
+.batch-card > div:last-child {
+
+    border-right: none;
+}
+
+
+.batch-card span {
+
+    display: block;
+
+    color: #555;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+
+.batch-card strong {
+
+    color: #ccc;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.staff-empty {
+
+    padding: 80px 30px;
+
+    background: #111;
+
+    border: 1px solid #222;
+
+    text-align: center;
+
+    color: #d71920;
+
+    font-size: 32px;
+}
+
+
+.staff-empty h3 {
+
+    color: #ddd;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 23px;
+
+    margin-top: 15px;
+}
+
+
+.staff-empty p {
+
+    color: #666;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================
+   ATTENDANCE DATE
+   ========================================= */
+
+.attendance-date {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 20px;
+
+    background: #111;
+
+    border: 1px solid #222;
+
+    margin-bottom: 20px;
+}
+
+
+.attendance-date label {
+
+    color: #777;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+.attendance-date input {
+
+    height: 38px;
+
+    padding: 0 12px;
+
+    background: #171717;
+
+    border: 1px solid #333;
+
+    color: #ccc;
+
+    outline: none;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+}
+
+
+.attendance-date input:focus {
+
+    border-color: #d71920;
+}
+
+
+/* =========================================
+   PASSWORD
+   ========================================= */
+
+.staff-password {
+
+    max-width: 600px;
+
+    padding: 30px;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.staff-password label {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 9px;
+
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+}
+
+
+.staff-password label:first-child {
+
+    margin-top: 0;
+}
+
+
+.staff-password input {
+
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 13px;
+
+    background: #171717;
+
+    border: 1px solid #292929;
+
+    color: #fff;
+
+    outline: none;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+}
+
+
+.staff-password input:focus {
+
+    border-color: #d71920;
+}
+
+
+.staff-password button {
+
+    margin-top: 20px;
+
+    padding: 12px 20px;
+
+    background: #d71920;
+
+    border: none;
+
+    color: #fff;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+}
+
+
+.staff-password button:hover {
+
+    background: #f02028;
+}
+
+
+/* =========================================
+   TABLE PREPARATION
+   ========================================= */
+
+.staff-table-wrapper {
+
+    overflow-x: auto;
+
+    background: #111;
+
+    border: 1px solid #222;
+}
+
+
+.staff-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 700px;
+}
+
+
+.staff-table th {
+
+    padding: 15px;
+
+    background: #171717;
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    text-align: left;
+}
+
+
+.staff-table td {
+
+    padding: 15px;
+
+    border-top: 1px solid #222;
+
+    color: #aaa;
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1100px) {
+
+    .staff-stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .batch-card {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .batch-card > div:nth-child(2) {
+
+        border-right: none;
+    }
+
+
+    .batch-card > div:nth-child(1),
+    .batch-card > div:nth-child(2) {
+
+        border-bottom: 1px solid #222;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .staff-sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+    }
+
+
+    .staff-nav {
+
+        flex-direction: row;
+
+        overflow-x: auto;
+    }
+
+
+    .staff-nav button {
+
+        min-width: 125px;
+    }
+
+
+    .staff-bottom {
+
+        display: none;
+    }
+
+
+    .staff-main {
+
+        margin-left: 0;
+
+        padding: 25px 15px;
+    }
+
+
+    .staff-header {
+
+        margin-bottom: 25px;
+    }
+
+
+    .staff-header h1 {
+
+        font-size: 28px;
+    }
+
+
+    .staff-stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .batch-card {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .batch-card > div {
+
+        border-right: none;
+
+        border-bottom: 1px solid #222;
+    }
+
+
+    .batch-card > div:last-child {
+
+        border-bottom: none;
+    }
+
+
+    .attendance-date {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .staff-welcome {
+
+        padding: 25px;
+    }
+
+
+    .staff-welcome h2 {
+
+        font-size: 26px;
+    }
+
+
+    .staff-panel {
+
+        padding: 22px;
+    }
+
+
+    .staff-heading h2 {
+
+        font-size: 30px;
+    }
+
+}
+/* =====================================================
+   ATTENDANCE
+===================================================== */
+
+.attendance-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.attendance-control {
+    padding: 20px;
+    background: #111;
+    border: 1px solid #222;
+}
+
+.attendance-control label {
+    display: block;
+    color: #777;
+    font-size: 9px;
+    margin-bottom: 8px;
+}
+
+.attendance-control select,
+.attendance-control input {
+    width: 100%;
+    height: 45px;
+    padding: 0 13px;
+    box-sizing: border-box;
+    background: #171717;
+    border: 1px solid #292929;
+    color: #fff;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+}
+
+.attendance-control select:focus,
+.attendance-control input:focus {
+    border-color: #d71920;
+}
+
+
+/* SUMMARY */
+
+.attendance-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.attendance-summary div {
+    padding: 20px;
+    background: #111;
+    border: 1px solid #222;
+}
+
+.attendance-summary span {
+    display: block;
+    color: #666;
+    font-size: 8px;
+    margin-bottom: 8px;
+}
+
+.attendance-summary strong {
+    font-family: "Oswald", sans-serif;
+    font-size: 28px;
+}
+
+
+/* ACTIONS */
+
+.attendance-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.attendance-actions button {
+    padding: 11px 16px;
+    background: #171717;
+    border: 1px solid #292929;
+    color: #ccc;
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.attendance-actions button:hover {
+    border-color: #d71920;
+    color: #fff;
+}
+
+
+/* STUDENT LIST */
+
+.attendance-student-list {
+    background: #111;
+    border: 1px solid #222;
+}
+
+.attendance-student-row {
+    display: grid;
+    grid-template-columns: 45px 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 17px 20px;
+    border-bottom: 1px solid #222;
+}
+
+.attendance-student-row:last-child {
+    border-bottom: none;
+}
+
+.attendance-number {
+    color: #555;
+    font-size: 10px;
+}
+
+.attendance-student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.attendance-student-info strong {
+    color: #ddd;
+    font-size: 11px;
+}
+
+.attendance-student-info span {
+    color: #555;
+    font-size: 8px;
+}
+
+.attendance-status {
+    display: flex;
+    gap: 10px;
+}
+
+.attendance-radio {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.attendance-radio input {
+    accent-color: #d71920;
+}
+
+.attendance-radio.present {
+    color: #35c759;
+}
+
+.attendance-radio.absent {
+    color: #d71920;
+}
+
+
+/* EMPTY */
+
+.attendance-empty,
+.attendance-loading {
+    padding: 50px 20px;
+    text-align: center;
+    color: #555;
+    font-size: 10px;
+}
+
+.attendance-empty h3 {
+    margin: 10px 0 5px;
+    color: #777;
+    font-size: 12px;
+}
+
+.attendance-empty p {
+    margin: 0;
+    color: #444;
+}
+
+
+/* SAVE */
+
+.attendance-save-area {
+    margin-top: 20px;
+}
+
+.attendance-save-area button {
+    padding: 14px 25px;
+    background: #d71920;
+    border: none;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.attendance-save-area button:hover {
+    background: #b9141a;
+}
+
+.attendance-save-area button:disabled {
+    background: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .attendance-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .attendance-student-row {
+        grid-template-columns: 30px 1fr;
+    }
+
+    .attendance-status {
+        grid-column: 2;
+    }
+
+    .attendance-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+/* =====================================================
+   STAFF STUDENTS TABLE
+===================================================== */
+
+.staff-students-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #242424;
+    background: #111111;
+}
+
+
+.staff-students-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+
+/* TABLE HEADER */
+
+.staff-students-table thead {
+    background: #151515;
+}
+
+
+.staff-students-table th {
+    padding: 16px 14px;
+    text-align: left;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    color: #777777;
+
+    border-bottom: 1px solid #282828;
+}
+
+
+/* COLUMN WIDTHS */
+
+.staff-students-table th:nth-child(1) {
+    width: 7%;
+}
+
+.staff-students-table th:nth-child(2) {
+    width: 27%;
+}
+
+.staff-students-table th:nth-child(3) {
+    width: 17%;
+}
+
+.staff-students-table th:nth-child(4) {
+    width: 21%;
+}
+
+.staff-students-table th:nth-child(5) {
+    width: 17%;
+}
+
+.staff-students-table th:nth-child(6) {
+    width: 11%;
+}
+
+
+/* TABLE BODY */
+
+.staff-students-table td {
+    padding: 15px 14px;
+
+    font-size: 13px;
+    color: #d0d0d0;
+
+    border-bottom: 1px solid #222222;
+}
+
+
+/* STUDENT PHOTO */
+
+.staff-student-photo {
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+}
+
+
+.staff-student-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* FALLBACK AVATAR */
+
+.staff-student-avatar {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #242424;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* STUDENT NAME */
+
+.staff-student-name strong {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+
+/* STATUS */
+
+.staff-students-table .student-status {
+    display: inline-block;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo img {
+    width: 53px;
+    height: 53px;
+    object-fit: contain;
+    display: block;
+}
+
+.logo h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.logo p {
+    margin: 2px 0 0;
+    color: #666;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+/* =====================================================
+   STAFF STUDENT 360
+===================================================== */
+
+.staff-student360-search {
+    display: flex;
+    gap: 12px;
+    max-width: 720px;
+    margin: 24px 0;
+}
+
+.staff-student360-search input {
+    flex: 1;
+    height: 48px;
+    padding: 0 18px;
+
+    background: #111;
+    border: 1px solid #2b2b2b;
+    border-radius: 8px;
+
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+}
+
+.staff-student360-search input:focus {
+    border-color: #ed1c24;
+    box-shadow: 0 0 0 2px rgba(237, 28, 36, 0.12);
+}
+
+.staff-student360-search button {
+    height: 48px;
+    padding: 0 22px;
+
+    background: #ed1c24;
+    border: none;
+    border-radius: 8px;
+
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.staff-student360-search button:hover {
+    background: #ff2932;
+}
+
+
+/* SEARCH RESULTS */
+
+.staff-student360-results {
+    max-width: 900px;
+    margin-bottom: 25px;
+}
+
+.staff-student360-results > p {
+    color: #777;
+    font-size: 13px;
+}
+
+.staff-student360-result-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 20px;
+    margin-bottom: 10px;
+
+    background: #111;
+    border: 1px solid #262626;
+    border-radius: 10px;
+}
+
+.staff-student360-result-card:hover {
+    border-color: #ed1c24;
+}
+
+.staff-student360-result-card > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.staff-student360-result-card strong {
+    color: #fff;
+    font-size: 14px;
+}
+
+.staff-student360-result-card span {
+    color: #777;
+    font-size: 12px;
+}
+
+.staff-student360-result-card button {
+    padding: 9px 16px;
+
+    background: transparent;
+    border: 1px solid #ed1c24;
+    border-radius: 6px;
+
+    color: #ed1c24;
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.staff-student360-result-card button:hover {
+    background: #ed1c24;
+    color: #fff;
+}
+
+
+/* PROFILE */
+
+.staff-student360-profile {
+    max-width: 1100px;
+}
+
+.staff-student360-card {
+    background: #101010;
+    border: 1px solid #292929;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.staff-student360-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    padding: 28px 30px;
+
+    background: linear-gradient(
+        135deg,
+        #171717,
+        #0d0d0d
+    );
+
+    border-bottom: 1px solid #292929;
+}
+
+.staff-student360-photo {
+    width: 100px;
+    height: 100px;
+}
+
+.staff-student360-photo img,
+.staff-student360-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.staff-student360-photo img {
+    border: 2px solid #ed1c24;
+}
+
+.staff-student360-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1d1d1d;
+    border: 1px solid #333;
+
+    color: #ed1c24;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.staff-student360-header h2 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: 23px;
+}
+
+.staff-student360-header p {
+    margin: 4px 0;
+    color: #888;
+    font-size: 12px;
+}
+
+.staff-student360-status {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+
+    background: rgba(46, 204, 113, 0.1);
+    border: 1px solid rgba(46, 204, 113, 0.25);
+    border-radius: 20px;
+
+    color: #55d98a;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.staff-student360-section {
+    padding: 24px 30px;
+    border-bottom: 1px solid #222;
+}
+
+.staff-student360-section h3 {
+    margin: 0 0 18px;
+
+    color: #ed1c24;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.staff-student360-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.staff-student360-grid > div {
+    min-height: 68px;
+    padding: 14px 16px;
+
+    background: #151515;
+    border: 1px solid #222;
+    border-radius: 8px;
+}
+
+.staff-student360-grid span {
+    display: block;
+    margin-bottom: 7px;
+
+    color: #666;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.staff-student360-grid strong {
+    color: #ddd;
+    font-size: 13px;
+}
+
+.staff-student360-section > p {
+    margin: 0;
+    padding: 15px 17px;
+
+    background: #151515;
+    border: 1px solid #222;
+    border-radius: 8px;
+
+    color: #bbb;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.staff-student360-attendance {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 18px 20px;
+
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 10px;
+}
+
+.staff-student360-attendance strong {
+    color: #ed1c24;
+    font-size: 28px;
+}
+
+.staff-student360-attendance span {
+    color: #888;
+    font-size: 12px;
+}

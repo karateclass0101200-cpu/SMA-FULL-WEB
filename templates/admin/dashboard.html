@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | SMA</title>
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin.css') }}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="admin-page">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+    <img
+        src="{{ url_for('static', filename='images/sma-logo.jpeg') }}"
+        alt="SMA Logo"
+    >
+    <div>
+        <h2>SANJAY</h2>
+        <p>MARTIAL ARTS ACADEMY</p>
+    </div>
+</div>
+
+
+        <div class="admin-profile">
+
+            <div class="profile-icon">
+                A
+            </div>
+
+            <div>
+                <strong>Administrator</strong>
+                <span>ADMIN</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button class="active" onclick="showSection('overview', this)">
+                <span>⌂</span>
+                Overview
+            </button>
+
+            <button onclick="showSection('students', this)">
+                <span>👥</span>
+                Students
+            </button>
+
+            <button onclick="showSection('applications', this)">
+                <span>📋</span>
+                Applications
+            </button>
+
+            <button onclick="showSection('staff', this)">
+                <span>🥋</span>
+                Timing Masters
+            </button>
+
+            <button onclick="showSection('batches', this)">
+                <span>🕐</span>
+                Batches & Timings
+            </button>
+
+            <button onclick="showSection('attendance', this)">
+                <span>✓</span>
+                Attendance
+            </button>
+
+            <button onclick="showSection('announcements', this)">
+                <span>📢</span>
+                Announcements
+            </button>
+
+            <button onclick="showSection('messages', this)">
+                <span>💬</span>
+                Messages
+            </button>
+            <button onclick="showSection('student360', this)">
+            <span>🔄</span>
+            STUDENT 360
+            </button>
+
+        </nav>
+        
+
+        <div class="sidebar-bottom">
+
+            <button onclick="showSection('settings', this)">
+                ⚙ Settings
+            </button>
+
+            <button onclick="logoutAdmin()">
+    ↪ Logout
+</button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="admin-main">
+
+        <!-- TOP BAR -->
+
+        <header class="admin-header">
+
+            <div>
+
+                <p>ACADEMY MANAGEMENT</p>
+
+                <h1 id="pageTitle">
+                    Dashboard Overview
+                </h1>
+
+            </div>
+
+            <div class="header-date">
+                2026
+            </div>
+
+        </header>
+
+
+        <!-- OVERVIEW -->
+
+        <section id="overview" class="dashboard-section active-section">
+
+            <div class="welcome-box">
+
+                <div>
+
+                    <span>WELCOME BACK</span>
+
+                    <h2>
+                        Academy Administration
+                    </h2>
+
+                    <p>
+                        Manage students, applications, batches,
+                        attendance and academy activities from here.
+                    </p>
+
+                </div>
+
+                <div class="welcome-icon">
+                    SMA
+                </div>
+
+            </div>
+
+            
+            <!-- STAT CARDS -->
+
+            <div class="stats-grid">
+
+    <div class="stat-card">
+
+        <span class="stat-icon">👥</span>
+
+        <div>
+            <small>ACTIVE STUDENTS</small>
+            <strong id="activeStudentsCount">0</strong>
+        </div>
+
+    </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">📋</span>
+
+                    <div>
+                        <small>PENDING APPLICATIONS</small>
+                        <strong id="pendingApplicationsCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">🥋</span>
+
+                    <div>
+                        <small>TIMING MASTERS</small>
+                        <strong>0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">🕐</span>
+
+                    <div>
+                        <small>ACTIVE BATCHES</small>
+                        <strong>0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="content-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span>QUICK ACTIONS</span>
+                            <h3>Academy Management</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <button onclick="showSection('applications')">
+                            <strong>📋</strong>
+                            <span>
+                                <b>Review Applications</b>
+                                <small>Accept or reject new applications</small>
+                            </span>
+                        </button>
+
+                        <button onclick="showSection('students')">
+                            <strong>👥</strong>
+                            <span>
+                                <b>Manage Students</b>
+                                <small>View and manage student accounts</small>
+                            </span>
+                        </button>
+
+                        <button onclick="showSection('batches')">
+                            <strong>🕐</strong>
+                            <span>
+                                <b>Manage Batches</b>
+                                <small>Create training batches and timings</small>
+                            </span>
+                        </button>
+
+                        <button onclick="showSection('announcements')">
+                            <strong>📢</strong>
+                            <span>
+                                <b>New Announcement</b>
+                                <small>Publish academy announcements</small>
+                            </span>
+                        </button>
+                        <button
+                    </div>
+
+                </div>
+
+
+                <!-- SYSTEM STATUS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span>SYSTEM</span>
+                            <h3>Academy Status</h3>
+                        </div>
+
+                    </div>
+
+                    <div class="system-status">
+
+                        <div>
+                            <span class="status-dot"></span>
+                            <p>Student Management</p>
+                            <strong>Ready</strong>
+                        </div>
+
+                        <div>
+                            <span class="status-dot"></span>
+                            <p>Attendance System</p>
+                            <strong>Ready</strong>
+                        </div>
+
+                        <div>
+                            <span class="status-dot"></span>
+                            <p>Announcements</p>
+                            <strong>Ready</strong>
+                        </div>
+
+                        <div>
+                            <span class="status-dot"></span>
+                            <p>Messaging</p>
+                            <strong>Ready</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        
+
+        <!-- STUDENTS -->
+
+      <section id="students" class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span>STUDENT MANAGEMENT</span>
+            <h2>Students</h2>
+        </div>
+
+        <button class="action-btn" onclick="openAddStudentModal()">
+            + Add Student
+        </button>
+
+    </div>
+
+    <!-- STUDENT LIST -->
+    <div class="student-list-panel">
+
+        <div class="student-list-header">
+            <div>PHOTO</div>
+            <div>STUDENT</div>
+            
+            <div>USER ID</div>
+            <div>REGISTRATION NO.</div>
+            <div>MOBILE</div>
+            <div>STATUS</div>
+        </div>
+
+        <div id="studentListContainer">
+
+            <!-- Students will be loaded here -->
+
+            <div class="student-empty-state">
+                <div>👥</div>
+
+                <h3>Loading Students...</h3>
+
+                <p>
+                    Student records are being loaded.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- APPLICATIONS -->
+
+       <section id="applications" class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span>ADMISSION MANAGEMENT</span>
+            <h2>Applications</h2>
+        </div>
+
+        <div class="application-count">
+            <span id="pendingCount">2</span>
+            Pending Applications
+        </div>
+
+    </div>
+
+
+    <!-- FILTER -->
+
+    <div class="application-filter">
+
+        <button class="filter-active"
+                onclick="filterApplications('ALL', this)">
+            All
+        </button>
+
+        <button onclick="filterApplications('PENDING', this)">
+            Pending
+        </button>
+
+        <button onclick="filterApplications('ACCEPTED', this)">
+            Accepted
+        </button>
+
+        <button onclick="filterApplications('REJECTED', this)">
+            Rejected
+        </button>
+
+    </div>
+                  
+
+    <!-- APPLICATION TABLE -->
+
+    <div class="application-table-wrapper">
+
+        <table class="application-table">
+
+            <thead>
+
+                <tr>
+                    <th>APPLICATION ID</th>
+                    <th>STUDENT</th>
+                    <th>MOBILE</th>
+                    <th>BATCH</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="applicationTableBody">
+
+                <!-- Demo application 1 -->
+
+                <tr data-status="PENDING">
+
+                    <td>
+                        <strong>APP-0001</strong>
+                    </td>
+
+                    <td>
+                        <div class="student-cell">
+
+                            <div class="student-avatar">
+                                A
+                            </div>
+
+                            <div>
+                                <strong>Arun Kumar</strong>
+                                <small>Age: 14</small>
+                            </div>
+
+                        </div>
+                    </td>
+
+                    <td>
+                        98765 43210
+                    </td>
+
+                    <td>
+                        Evening
+                    </td>
+
+                    <td>
+                        <span class="status pending">
+                            PENDING
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="view-btn"
+                            onclick="openApplication('APP-0001')">
+                            VIEW
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- Demo application 2 -->
+
+                <tr data-status="PENDING">
+
+                    <td>
+                        <strong>APP-0002</strong>
+                    </td>
+
+                    <td>
+
+                        <div class="student-cell">
+
+                            <div class="student-avatar">
+                                R
+                            </div>
+
+                            <div>
+                                <strong>Riya S</strong>
+                                <small>Age: 11</small>
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+                        91234 56789
+                    </td>
+
+                    <td>
+                        Morning
+                    </td>
+
+                    <td>
+                        <span class="status pending">
+                            PENDING
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="view-btn"
+                            onclick="openApplication('APP-0002')">
+                            VIEW
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- STUDENT 360 -->
+<section id="student360" class="dashboard-section">
+
+    <div class="admin-heading">
+        <span>STUDENT MANAGEMENT</span>
+        <h2>Student 360</h2>
+    </div>
+
+    <div class="student360-search-box">
+
+        <input
+            type="text"
+            id="student360Search"
+            placeholder="Search by student name or registration number..."
+            autocomplete="off"
+        >
+
+        <button type="button" onclick="searchStudent360()">
+            🔍 SEARCH
+        </button>
+
+    </div>
+
+    <div id="student360Results" class="student360-results">
+        <p>Search for a student to view their profile.</p>
+    </div>
+
+    <div id="student360Profile" class="student360-profile">
+    </div>
+
+</section>
+
+
+        <!-- STAFF -->
+
+        <section id="staff" class="dashboard-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span>STAFF MANAGEMENT</span>
+                    <h2>Timing Masters</h2>
+                </div>
+
+                <button class="action-btn">
+                    + Add Timing Master
+                </button>
+
+            </div>
+
+            <div class="empty-panel">
+
+                <div>🥋</div>
+
+                <h3>No Timing Masters Added</h3>
+
+                <p>
+                    Timing Master accounts can be created
+                    from this section.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BATCHES -->
+
+        <section id="batches" class="dashboard-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span>TRAINING MANAGEMENT</span>
+                    <h2>Batches & Timings</h2>
+                </div>
+
+                <button class="action-btn">
+                    + Create Batch
+                </button>
+
+            </div>
+
+            <div class="empty-panel">
+
+                <div>🕐</div>
+
+                <h3>No Batches Created</h3>
+
+                <p>
+                    Create morning, evening and weekend
+                    training batches here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+     ATTENDANCE
+===================================================== -->
+
+<section id="attendance" class="dashboard-section">
+
+    <div class="admin-heading">
+        <span>ATTENDANCE MANAGEMENT</span>
+        <h2>Attendance</h2>
+    </div>
+
+
+    <!-- DATE -->
+
+    <div class="attendance-controls">
+
+        <div class="attendance-control">
+
+            <label>SELECT DATE</label>
+
+            <input
+                type="date"
+                id="adminAttendanceDate"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="attendance-summary">
+
+        <div>
+            <span>PRESENT</span>
+            <strong id="adminPresentCount">0</strong>
+        </div>
+
+        <div>
+            <span>ABSENT</span>
+            <strong id="adminAbsentCount">0</strong>
+        </div>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+
+    <div class="attendance-actions">
+
+        <button
+            type="button"
+            onclick="adminMarkAllPresent()"
+        >
+            ✓ MARK ALL PRESENT
+        </button>
+
+        <button
+            type="button"
+            onclick="adminMarkAllAbsent()"
+        >
+            ✕ MARK ALL ABSENT
+        </button>
+
+        <button
+            type="button"
+            onclick="loadAdminAttendance()"
+        >
+            ↻ LOAD ATTENDANCE
+        </button>
+
+    </div>
+
+
+    <!-- STUDENT LIST -->
+
+    <div
+        id="adminAttendanceStudentList"
+        class="attendance-student-list"
+    >
+
+        <div class="attendance-empty">
+
+            ✓
+
+            <h3>Attendance List</h3>
+
+            <p>
+                Select a date to load students.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUBMIT -->
+
+    <div class="attendance-save-area">
+
+        <button
+            type="button"
+            id="adminSaveAttendanceButton"
+            onclick="saveAdminAttendance()"
+        >
+            SUBMIT ATTENDANCE
+        </button>
+
+    </div>
+
+</section>
+
+
+        <!-- ANNOUNCEMENTS -->
+
+        <!-- =====================================================
+     ANNOUNCEMENTS
+===================================================== -->
+
+<section id="announcements" class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span>ACADEMY COMMUNICATION</span>
+            <h2>Announcements</h2>
+        </div>
+
+        <button
+            type="button"
+            class="action-btn"
+            onclick="openAnnouncementForm()"
+        >
+            + New Announcement
+        </button>
+
+    </div>
+
+
+    <!-- NEW ANNOUNCEMENT FORM -->
+
+    <div
+        id="announcementForm"
+        class="announcement-form-panel"
+        style="display: none;"
+    >
+
+        <div class="announcement-form-header">
+            <div>
+                <span>CREATE UPDATE</span>
+                <h3>New Announcement</h3>
+            </div>
+
+            <button
+                type="button"
+                class="announcement-close-btn"
+                onclick="closeAnnouncementForm()"
+            >
+                ✕
+            </button>
+        </div>
+
+
+        <div class="announcement-form-group">
+
+            <label for="announcementTitle">
+                TITLE
+            </label>
+
+            <input
+                type="text"
+                id="announcementTitle"
+                placeholder="Enter announcement title"
+                maxlength="150"
+            >
+
+        </div>
+
+
+        <div class="announcement-form-group">
+
+            <label for="announcementMessage">
+                MESSAGE
+            </label>
+
+            <textarea
+                id="announcementMessage"
+                rows="6"
+                placeholder="Write your announcement..."
+                maxlength="2000"
+            ></textarea>
+
+        </div>
+
+
+        <div
+            id="announcementFormError"
+            class="announcement-form-error"
+        ></div>
+
+
+        <div class="announcement-form-actions">
+
+            <button
+                type="button"
+                class="announcement-cancel-btn"
+                onclick="closeAnnouncementForm()"
+            >
+                CANCEL
+            </button>
+
+            <button
+                type="button"
+                class="announcement-publish-btn"
+                onclick="publishAnnouncement()"
+            >
+                📢 PUBLISH
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ANNOUNCEMENT LIST -->
+
+    <div
+        id="adminAnnouncementsList"
+        class="admin-announcements-list"
+    >
+
+        <div class="announcement-loading">
+            Loading announcements...
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- MESSAGES -->
+
+<section id="messages" class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span>COMMUNICATION</span>
+            <h2>Messages</h2>
+        </div>
+
+    </div>
+
+
+    <div
+        id="adminMessagesList"
+        class="admin-messages-list"
+    >
+
+        <div class="admin-message-loading">
+            Loading messages...
+        </div>
+
+    </div>
+
+</section>
+
+        
+
+        <!-- OVERVIEW -->
+
+        <section id="overview" class="dashboard-section active-section">
+
+            <div class="welcome-box">
+
+                <div>
+
+                    <span>WELCOME BACK</span>
+
+                    <h2>
+                        Academy Administration
+                    </h2>
+
+                    <p>
+                        Manage students, applications, batches,
+                        attendance and academy activities from here.
+                    </p>
+
+                </div>
+
+                <div class="welcome-icon">
+                    SMA
+                </div>
+
+            </div>
+
+            
+            <!-- STAT CARDS -->
+
+            <div class="stats-grid">
+
+    <div class="stat-card">
+
+        <span class="stat-icon">👥</span>
+
+        <div>
+            <small>ACTIVE STUDENTS</small>
+            <strong id="activeStudentsCount">0</strong>
+        </div>
+
+    </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">📋</span>
+
+                    <div>
+                        <small>PENDING APPLICATIONS</small>
+                        <strong id="pendingApplicationsCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">🥋</span>
+
+                    <div>
+                        <small>TIMING MASTERS</small>
+                        <strong>0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-icon">🕐</span>
+
+                    <div>
+                        <small>ACTIVE BATCHES</small>
+                        <strong>0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="content-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span>QUICK ACTIONS</span>
+                            <h3>Academy Management</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <button onclick="showSection('applications')">
+                            <strong>📋</strong>
+                            <span>
+                                <b>Review Applications</b>
+                                <small>Accept or reject new applications</small>
+                            </span>
+                        </button>
+
+                        <button onclick="showSection('students')">
+                            <strong>👥</strong>
+                            <span>
+                                <b>Manage Students</b>
+                                <small>View and manage student accounts</small>
+                            </span>
+                        </button>
+
+                        <button onclick="showSection('batches')">
+                            <strong>🕐</strong>
+                            <span>
+                                <b>Manage Batches</b>
+                                <small>Create training batches and timings</small>
+                            </span>
+                        </button>
+
+                        <button onclick="showSection('announcements')">
+                            <strong>📢</strong>
+                            <span>
+                                <b>New Announcement</b>
+                                <small>Publish academy announcements</small>
+                            </span>
+                        </button>
+
+                    </div>
+
+                </div>
+<section id="overview" class="dashboard-section active-section">
+
+            <div class="welcome-box">
+
+                <div>
+
+                    <span>WELCOME BACK</span>
+
+                    <h2>
+                        Academy Administration
+                    </h2>
+
+                    <p>
+                        Manage students, applications, batches,
+                        attendance and academy activities from here.
+                    </p>
+
+                </div>
+
+                <div class="welcome-icon">
+                    SMA
+                </div>
+
+            </div>
+        <!-- SETTINGS -->
+
+        <section id="settings" class="dashboard-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span>ADMINISTRATION</span>
+                    <h2>Settings</h2>
+                </div>
+
+            </div>
+
+            <div class="settings-panel">
+
+                <div class="setting-row">
+
+                    <div>
+                        <strong>Academy Profile</strong>
+                        <p>Manage academy information</p>
+                    </div>
+
+                    <button>Manage</button>
+
+                </div>
+
+                <div class="setting-row">
+
+                    <div>
+                        <strong>Admin Accounts</strong>
+                        <p>Manage authorised administrators</p>
+                    </div>
+
+                    <button>Manage</button>
+
+                </div>
+
+                <div class="setting-row">
+
+                    <div>
+                        <strong>Security</strong>
+                        <p>Password and authentication settings</p>
+                    </div>
+
+                    <button>Manage</button>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ADD STUDENT MODAL -->
+<div id="addStudentModal" class="modal-overlay">
+    <div class="student-modal">
+
+        <div class="modal-header">
+            <div>
+                <h2>ADD STUDENT</h2>
+                <p>Create a new student account</p>
+            </div>
+
+            <button class="modal-close" onclick="closeAddStudentModal()">
+                ×
+            </button>
+        </div>
+
+        <form id="addStudentForm">
+
+            <h3>PERSONAL DETAILS</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>FULL NAME *</label>
+                    <input type="text" id="addFullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>DATE OF BIRTH *</label>
+                    <input type="date" id="addDob" required>
+                </div>
+
+                <div class="form-group">
+                    <label>GENDER *</label>
+                    <select id="addGender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>STUDENT MOBILE *</label>
+                    <input type="tel" id="addStudentMobile"
+                           maxlength="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label>EMAIL</label>
+                    <input type="email" id="addEmail">
+                </div>
+
+            </div>
+
+            <h3>PARENT / GUARDIAN DETAILS</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>PARENT / GUARDIAN NAME</label>
+                    <input type="text" id="addParentName">
+                </div>
+
+                <div class="form-group">
+                    <label>PARENT MOBILE</label>
+                    <input type="tel" id="addParentMobile"
+                           maxlength="10">
+                </div>
+
+                <div class="form-group">
+                    <label>EMERGENCY CONTACT</label>
+                    <input type="tel" id="addEmergencyContact"
+                           maxlength="10">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>ADDRESS</label>
+                    <textarea id="addAddress" rows="3"></textarea>
+                </div>
+
+            </div>
+
+            <h3>MARTIAL ARTS DETAILS</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>EXPERIENCE</label>
+                    <select id="addExperience">
+                        <option value="">Select Experience</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Some Experience">Some Experience</option>
+                        <option value="Experienced">Experienced</option>
+                    </select>
+                </div>
+                </div>
+            <div id="addStudentMessage" class="form-message"></div>
+
+            <div class="modal-actions">
+                <button type="button"
+                        class="secondary-btn"
+                        onclick="closeAddStudentModal()">
+                    CANCEL
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    CREATE STUDENT PROFILE
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+    </main>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+
+</html>
