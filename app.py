@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify, session, render_template
-import sqlite3
+import os
+import psycopg
+from psycopg.rows import dict_row
 import requests
 from dotenv import load_dotenv
 from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
-import os
+
 load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.environ.get(
@@ -14,10 +16,17 @@ app.secret_key = os.environ.get(
 EMAIL_ADDRESS = os.environ.get("EMAIL_ADDRESS")
 RESEND_API_KEY = os.environ.get("RESEND_API_KEY")
 
-DATABASE = "database.db"
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
 def get_db():
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
+    if not DATABASE_URL:
+        raise RuntimeError("DATABASE_URL is not configured")
+
+    conn = psycopg.connect(
+        DATABASE_URL,
+        row_factory=dict_row
+    )
+
     return conn
 
 # =========================================================
@@ -161,7 +170,7 @@ def send_student_message():
                 message,
                 status
             )
-            VALUES (?, ?, ?, ?, ?)
+            VALUES (%s,%s,%s,%s,%s)
         """, (
             session["user_id"],
             admin["user_id"],
@@ -268,7 +277,7 @@ def get_admin_messages():
             LEFT JOIN timing_masters tm
                 ON tm.user_id = m.sender_id
 
-            WHERE m.receiver_id = ?
+            WHERE m.receiver_id =%s
 
             ORDER BY m.id DESC
 
@@ -358,7 +367,7 @@ def login():
             role,
             status
         FROM users
-        WHERE user_id = ?
+        WHERE user_id =%s
         """,
         (user_id,)
     ).fetchone()
@@ -557,7 +566,7 @@ def submit_admission():
                 status,
                 created_at
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'PENDING', ?)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, 'PENDING',%s)
         """, (
             application_id,
             full_name,
@@ -668,7 +677,7 @@ def add_student():
         count_row = conn.execute("""
             SELECT COUNT(*) AS total
             FROM students
-            WHERE registration_number LIKE ?
+            WHERE registration_number LIKE %s
         """, (f"SMA-{year}-%",)).fetchone()
 
         registration_number = (
@@ -682,7 +691,7 @@ def add_student():
         conn.execute("""
             INSERT INTO users
             (user_id, password_hash, role, status)
-            VALUES (?, ?, 'STUDENT', 'ACTIVE')
+            VALUES (%s,%s, 'STUDENT', 'ACTIVE')
         """, (
             student_user_id,
             password_hash
@@ -703,7 +712,7 @@ def add_student():
                 profile_completed,
                 student_profile_edited
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, 'ACTIVE', 0, 0)
+            VALUES (%s,%s,%s,%s,%s,%s,%s, 'ACTIVE', 0, 0)
         """, (
             student_user_id,
             registration_number,
@@ -727,7 +736,7 @@ def add_student():
             }
         })
 
-    except sqlite3.IntegrityError as e:
+    except UniqueViolation as e:
         conn.rollback()
 
         print("ADD STUDENT DATABASE ERROR:", repr(e))
@@ -805,7 +814,7 @@ def get_admin_students():
                         END
                     ) AS present_days
                 FROM attendance
-                WHERE student_id = ?
+                WHERE student_id =%s
             """, (student["id"],)).fetchone()
 
             total_days = attendance["total_days"] or 0
@@ -975,7 +984,7 @@ def get_application_details(application_id):
                 status,
                 created_at
             FROM applications
-            WHERE application_id = ?
+            WHERE application_id =%s
         """, (application_id,)).fetchone()
 
         if not application:
@@ -1053,7 +1062,7 @@ def application_decision(application_id):
         application = conn.execute("""
             SELECT *
             FROM applications
-            WHERE application_id = ?
+            WHERE application_id =%s
         """, (application_id,)).fetchone()
 
         if not application:
@@ -1077,8 +1086,8 @@ def application_decision(application_id):
             conn.execute("""
                 UPDATE applications
                 SET status = 'REJECTED',
-                    reviewed_at = ?
-                WHERE application_id = ?
+                    reviewed_at =%s
+                WHERE application_id =%s
             """, (
                 datetime.now().isoformat(timespec="seconds"),
                 application_id
@@ -1125,7 +1134,7 @@ def application_decision(application_id):
         count_row = conn.execute("""
             SELECT COUNT(*) AS total
             FROM students
-            WHERE registration_number LIKE ?
+            WHERE registration_number LIKE %s
         """, (f"SMA-{year}-%",)).fetchone()
 
         registration_number = (
@@ -1150,7 +1159,7 @@ def application_decision(application_id):
                 role,
                 status
             )
-            VALUES (?, ?, 'STUDENT', 'ACTIVE')
+            VALUES (%s,%s, 'STUDENT', 'ACTIVE')
         """, (
             student_user_id,
             password_hash
@@ -1179,7 +1188,7 @@ def application_decision(application_id):
                 profile_completed,
                 student_profile_edited
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'ACTIVE', 0, 0)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, 'ACTIVE', 0, 0)
         """, (
             student_user_id,
             registration_number,
@@ -1202,9 +1211,9 @@ def application_decision(application_id):
         conn.execute("""
             UPDATE applications
             SET status = 'ACCEPTED',
-                registration_number = ?,
-                reviewed_at = ?
-            WHERE application_id = ?
+                registration_number =%s,
+                reviewed_at =%s
+            WHERE application_id =%s
         """, (
             registration_number,
             datetime.now().isoformat(timespec="seconds"),
@@ -1248,7 +1257,7 @@ Sanjay Martial Arts Academy
         })
 
 
-    except sqlite3.IntegrityError as e:
+    except UniqueViolation as e:
 
         conn.rollback()
 
@@ -1330,7 +1339,7 @@ def get_student_profile():
             profile_completed,
             student_profile_edited
         FROM students
-        WHERE user_id = ?
+        WHERE user_id =%s
         """,
         (user_id,)
     ).fetchone()
@@ -1386,7 +1395,7 @@ def save_student_profile():
             id,
             student_profile_edited
         FROM students
-        WHERE user_id = ?
+        WHERE user_id =%s
         """,
         (user_id,)
     ).fetchone()
@@ -1420,15 +1429,15 @@ def save_student_profile():
         """
         UPDATE students
         SET
-            student_mobile = ?,
-            email = ?,
-            parent_name = ?,
-            parent_mobile = ?,
-            emergency_contact = ?,
-            address = ?,
+            student_mobile =%s,
+            email =%s,
+            parent_name =%s,
+            parent_mobile =%s,
+            emergency_contact =%s,
+            address =%s,
             profile_completed = 1,
             student_profile_edited = 1
-        WHERE user_id = ?
+        WHERE user_id =%s
         """,
         (
             data.get("student_mobile", "").strip(),
@@ -1486,7 +1495,7 @@ def staff_update_student_profile(student_user_id):
         """
         SELECT id
         FROM students
-        WHERE user_id = ?
+        WHERE user_id =%s
         """,
         (student_user_id,)
     ).fetchone()
@@ -1537,7 +1546,7 @@ def get_staff_student360(student_id):
                 photo_path,
                 status
             FROM students
-            WHERE id = ?
+            WHERE id =%s
         """, (student_id,)).fetchone()
 
         if not student:
@@ -1559,7 +1568,7 @@ def get_staff_student360(student_id):
                     END
                 ) AS present_days
             FROM attendance
-            WHERE student_id = ?
+            WHERE student_id =%s
         """, (student_id,)).fetchone()
 
 
@@ -1636,18 +1645,18 @@ def get_staff_student360(student_id):
         """
         UPDATE students
         SET
-            full_name = ?,
-            dob = ?,
-            gender = ?,
-            student_mobile = ?,
-            email = ?,
-            parent_name = ?,
-            parent_mobile = ?,
-            emergency_contact = ?,
-            address = ?,
-            experience = ?,
-            previous_training = ?,
-        WHERE user_id = ?
+            full_name =%s,
+            dob =%s,
+            gender =%s,
+            student_mobile =%s,
+            email =%s,
+            parent_name =%s,
+            parent_mobile =%s,
+            emergency_contact =%s,
+            address =%s,
+            experience =%s,
+            previous_training =%s,
+        WHERE user_id =%s
         """,
         (
             data.get("full_name", "").strip(),
@@ -1725,7 +1734,7 @@ def change_password():
         """
         SELECT password_hash
         FROM users
-        WHERE user_id = ?
+        WHERE user_id =%s
         """,
         (user_id,)
     ).fetchone()
@@ -1765,8 +1774,8 @@ def change_password():
     conn.execute(
         """
         UPDATE users
-        SET password_hash = ?
-        WHERE user_id = ?
+        SET password_hash =%s
+        WHERE user_id =%s
         """,
         (
             new_password_hash,
@@ -1835,7 +1844,7 @@ def get_staff_students():
                         END
                     ) AS present_days
                 FROM attendance
-                WHERE student_id = ?
+                WHERE student_id =%s
             """, (student["id"],)).fetchone()
 
             total_days = attendance["total_days"] or 0
@@ -1928,7 +1937,7 @@ def get_staff_attendance():
 
             LEFT JOIN attendance a
                 ON a.student_id = s.id
-                AND a.attendance_date = ?
+                AND a.attendance_date =%s
 
             WHERE s.status = 'ACTIVE'
 
@@ -2021,7 +2030,7 @@ def save_staff_attendance():
                     full_name,
                     email
                 FROM students
-                WHERE id = ?
+                WHERE id =%s
                 AND status = 'ACTIVE'
             """, (student_id,)).fetchone()
 
@@ -2035,8 +2044,8 @@ def save_staff_attendance():
                     id,
                     status
                 FROM attendance
-                WHERE student_id = ?
-                AND attendance_date = ?
+                WHERE student_id =%s
+                AND attendance_date =%s
             """, (
                 student_id,
                 attendance_date
@@ -2049,9 +2058,9 @@ def save_staff_attendance():
                 conn.execute("""
                     UPDATE attendance
                     SET
-                        status = ?,
-                        marked_by = ?
-                    WHERE id = ?
+                        status =%s,
+                        marked_by =%s
+                    WHERE id =%s
                 """, (
                     status,
                     session["user_id"],
@@ -2069,7 +2078,7 @@ def save_staff_attendance():
                         status,
                         marked_by
                     )
-                    VALUES (?, ?, ?, ?)
+                    VALUES (%s,%s,%s,%s)
                 """, (
                     student_id,
                     attendance_date,
@@ -2169,7 +2178,7 @@ def get_student_attendance():
                 user_id,
                 full_name
             FROM students
-            WHERE user_id = ?
+            WHERE user_id =%s
             AND status = 'ACTIVE'
         """, (
             session["user_id"],
@@ -2188,7 +2197,7 @@ def get_student_attendance():
                 attendance_date,
                 status
             FROM attendance
-            WHERE student_id = ?
+            WHERE student_id =%s
             ORDER BY attendance_date DESC
         """, (
             student["id"],
@@ -2351,7 +2360,7 @@ def create_admin_announcement():
                 created_by,
                 status
             )
-            VALUES (?, ?, ?, 'ACTIVE')
+            VALUES (%s,%s,%s, 'ACTIVE')
         """, (
             title,
             message,
@@ -2474,7 +2483,7 @@ def delete_admin_announcement(announcement_id):
         announcement = conn.execute("""
             SELECT id
             FROM announcements
-            WHERE id = ?
+            WHERE id =%s
             AND status = 'ACTIVE'
         """, (announcement_id,)).fetchone()
 
@@ -2488,7 +2497,7 @@ def delete_admin_announcement(announcement_id):
         conn.execute("""
             UPDATE announcements
             SET status = 'DELETED'
-            WHERE id = ?
+            WHERE id =%s
         """, (announcement_id,))
 
         conn.commit()
@@ -2639,7 +2648,7 @@ def reply_admin_message(message_id):
                 receiver_id,
                 subject
             FROM messages
-            WHERE id = ?
+            WHERE id =%s
         """, (message_id,)).fetchone()
 
         if not original:
@@ -2657,7 +2666,7 @@ def reply_admin_message(message_id):
                 message,
                 status
             )
-            VALUES (?, ?, ?, ?, ?)
+            VALUES (%s,%s,%s,%s,%s)
         """, (
             session["user_id"],
             receiver_id,
@@ -2724,7 +2733,7 @@ def get_student_messages():
                 status,
                 created_at
             FROM messages
-            WHERE receiver_id = ?
+            WHERE receiver_id =%s
             ORDER BY id DESC
         """, (session["user_id"],)).fetchall()
 
